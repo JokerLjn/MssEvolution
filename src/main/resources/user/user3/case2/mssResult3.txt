@@ -1,0 +1,30 @@
+微服务系统：
+name = AcmeAir
+microservices = [
+微服务AuthService
+	 classList = [LoginREST]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务BookService
+	 classList = [Order, FlightInfo, BookingsREST, ConnectionManager, BookingLoader, BookingServiceImpl, BookingService, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=BookingLoader, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=BookingService, type=ClassRealization), ClassRelation(origin=BookingLoader, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=BookingService, destination=Order, type=ClassDependency), ClassRelation(origin=BookingService, destination=FlightInfo, type=ClassDependency), ClassRelation(origin=Order, destination=FlightInfo, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务CustomerService
+	 classList = [CustomerService, ConnectionManager, CustomerREST, CustomerServiceImpl, CustomerInfo, KeyGenerator, AddressInfo, CustomerLoader]
+	 classRelationList = [ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerLoader, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerService, type=ClassInheritance), ClassRelation(origin=CustomerServiceImpl, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassAssociation), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=CustomerLoader, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerService, destination=CustomerInfo, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务FlightService
+	 classList = [FlightServiceImpl, ConnectionManager, AirportCodeMapping, FlightService, LoaderREST, AcmeAirApp, KeyGenerator, AcmeAirConfiguration, FlightLoader]
+	 classRelationList = [ClassRelation(origin=FlightLoader, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=AcmeAirConfiguration, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightService, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=AcmeAirConfiguration, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=FlightService, type=ClassInheritance)]
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 1.0150735294117652, cohesionDegree = 1.2301470588235293, coupingDegree = 9.2
+newQualityScore = 1.8246527777777777, cohesionDegree = 1.3993055555555556, coupingDegree = 7.75
+decreasePercent = -0.7975572457644161
+-----------------------------------
+mssCost = 76.03999999999999

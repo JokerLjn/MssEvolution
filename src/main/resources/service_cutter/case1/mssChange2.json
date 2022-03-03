@@ -1,0 +1,167 @@
+[
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "CustomerRepository"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "DELETE",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "Customer",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "CustomerRepository",
+      "method": "findByCustomerId"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "CustomerRepository",
+      "method": "findByName"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "className": "CargoRepository"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "DELETE",
+    "msName": "CargoService",
+    "valueMap": {
+      "className": "Cargo",
+      "method": "getCargoInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "className": "CargoRepository",
+      "method": "findByCargoTrackingId"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "className": "CargoRepository",
+      "method": "updateCargo"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "DeliveryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "DeliveryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "DeliveryService",
+      "className": "DeliverySpecification"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "className": "HandleEventRepository"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "className": "HandleEventRepository",
+      "method": "search"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "className": "HandleEventRepository",
+      "method": "add"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "HandleEventRepositoryService",
+      "interface": "/history/search"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "HandleEventRepositoryService",
+      "interface": "/history/add"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "msName": "CargoService",
+    "valueMap": {
+      "className": "DeliveryHistory"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "CargoRepositoryService",
+      "interface": "/cargo/getInfo"
+    }
+  }
+]

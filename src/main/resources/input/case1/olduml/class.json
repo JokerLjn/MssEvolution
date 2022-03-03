@@ -1,0 +1,249 @@
+{
+  "name": "Cargo Tracking",
+  "classList": [
+    {
+      "name": "Cargo",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "trackingID",
+          "type": "int",
+          "accessRight": "private"
+        },
+        {
+          "type": "int",
+          "name": "status",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "finish",
+          "params": [],
+          "returnType": "boolean",
+          "accessRight": "public"
+        },
+        {
+          "name": "getInfo",
+          "params": [],
+          "returnType": "Cargo",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "Role",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "String",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "Customer",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "customerID",
+          "type": "int",
+          "accessRight": "private"
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInfo",
+          "params": [],
+          "returnType": "Customer",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "DeliveryHistory",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "cargoID",
+          "type": "int",
+          "accessRight": "private"
+        },
+        {
+          "name": "handlingEvents",
+          "type": "List<HandlingEvent>",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "searchHistory",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            }
+          ],
+          "returnType": "DeliveryHistory",
+          "accessRight": "public"
+        },
+        {
+          "name": "addHistory",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            },
+            {
+              "name": "handlingEvent",
+              "type": "HandlingEvent"
+            }
+          ],
+          "returnType": "DeliveryHistory",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "HandlingEvent",
+      "type": "Control",
+      "attributes": [
+        {
+          "name": "completeTime",
+          "type": "Date",
+          "accessRight": "private"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "customerHandle",
+          "params": [],
+          "returnType": "boolean",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "DeliverySpecification",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "arrivalTime",
+          "type": "Date",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInfo",
+          "params": [],
+          "returnType": "DeliverySpecification",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "CarrierMovement",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "scheduleID",
+          "type": "int",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "carry",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            },
+            {
+              "name": "from",
+              "type": "Location"
+            },
+            {
+              "name": "to",
+              "type": "Location"
+            }
+          ],
+          "returnType": "boolean",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "Location",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "portCode",
+          "type": "int",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    }
+  ],
+  "classRelationList": [
+    {
+      "origin":"Customer",
+      "destination":"Role",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"Cargo",
+      "destination":"Role",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"HandlingEvent",
+      "destination":"Cargo",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"DeliveryHistory",
+      "destination":"Cargo",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"DeliveryHistory",
+      "destination":"HandlingEvent",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"DeliverySpecification",
+      "destination":"Cargo",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"DeliverySpecification",
+      "destination":"Location",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"HandlingEvent",
+      "destination":"CarrierMovement",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"CarrierMovement",
+      "destination":"Location",
+      "type":"ClassAssociation"
+    }
+  ]
+}

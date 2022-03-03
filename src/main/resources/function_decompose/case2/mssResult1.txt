@@ -1,0 +1,40 @@
+微服务系统：
+name = AcmeAir
+microservices = [
+微服务FlightService
+	 classList = [FlightsREST, FlightService, AcmeAirApp, AcmeAirConfiguration, DateParam]
+	 classRelationList = [ClassRelation(origin=FlightsREST, destination=FlightService, type=ClassAssociation), ClassRelation(origin=AcmeAirConfiguration, destination=FlightService, type=ClassAssociation), ClassRelation(origin=AcmeAirApp, destination=FlightsREST, type=ClassDependency), ClassRelation(origin=FlightsREST, destination=DateParam, type=ClassDependency), ClassRelation(origin=FlightsREST, destination=FlightService, type=ClassDependency), ClassRelation(origin=AcmeAirConfiguration, destination=FlightService, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务BookingService
+	 classList = [Order, BookingsREST, BookingService]
+	 classRelationList = [ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务AuthService
+	 classList = [FlightServiceImpl, CustomerService, CustomerREST, BookingServiceImpl, AuthService, LoginREST, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=LoginREST, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=LoginREST, destination=AuthService, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=AuthService, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=LoginREST, destination=CustomerService, type=ClassDependency), ClassRelation(origin=LoginREST, destination=AuthService, type=ClassAssociation), ClassRelation(origin=AuthService, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务LoaderService
+	 classList = [AirportCodeMapping, BookingLoader, LoaderREST, Loader, FlightLoader, SessionLoader]
+	 classRelationList = [ClassRelation(origin=FlightLoader, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=LoaderREST, destination=Loader, type=ClassAssociation), ClassRelation(origin=Loader, destination=SessionLoader, type=ClassAssociation), ClassRelation(origin=Loader, destination=FlightLoader, type=ClassAssociation), ClassRelation(origin=LoaderREST, destination=Loader, type=ClassDependency), ClassRelation(origin=Loader, destination=BookingLoader, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务InfoService
+	 classList = [CustomerInfo, AddressInfo]
+	 classRelationList = [ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassAssociation), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务ConnectionManagerService
+	 classList = [ConnectionManager, MongoConstants, CustomerServiceImpl, AuthServiceImpl]
+	 classRelationList = [ClassRelation(origin=CustomerServiceImpl, destination=MongoConstants, type=ClassRealization), ClassRelation(origin=ConnectionManager, destination=MongoConstants, type=ClassRealization), ClassRelation(origin=AuthServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=AuthServiceImpl, destination=MongoConstants, type=ClassRealization)]
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 0.6150735294117646, cohesionDegree = 1.2301470588235293, coupingDegree = 2.0
+newQualityScore = 2.503571428571428, cohesionDegree = 1.5071428571428571, coupingDegree = 6.5
+decreasePercent = -3.0703611988728543
+-----------------------------------
+mssCost = 90.06000000000004

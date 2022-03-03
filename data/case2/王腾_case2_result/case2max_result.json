@@ -1,0 +1,83 @@
+[
+  {
+    "name": "AuthService",
+    "classSet": [
+      "AuthServiceApp",
+      "AuthHealthCheck",
+      "LoginResponse",
+      "CustomerClient",
+      "LoginFallbackHandler",
+      "SessionConfiguration",
+      "LoginRest"
+    ]
+  },
+  {
+    "name": "BookService",
+    "classSet": [
+      "BookServiceApp",
+      "BookingService",
+      "BookingServiceImpl",
+      "BookingServiceRest",
+      "BookingRedinessHealthCheck",
+      "MilesResponse",
+      "BookingConfiuration",
+      "ConnectionManager",
+      "MongoProperties",
+      "LongFallbackHandler",
+      "BookingLoader",
+      "BookingLoaderRest",
+      "KeyGenerator",
+      "CustomerClient",
+      "FlightClient",
+      "RewardTracker",
+      "Order",
+      "FlightInfo"
+    ]
+  },
+  {
+    "name": "FightService",
+    "classSet": [
+      "FightServiceApp",
+      "FightService",
+      "FightServiceImpl",
+      "FightServiceRest",
+      "FightRedinessHealthCheck",
+      "MilesResponse",
+      "FightConfiuration",
+      "ConnectionManager",
+      "MongoProperties",
+      "FightLoader",
+      "FightLoaderRest",
+      "KeyGenerator",
+      "DatePram",
+      "AirportCodeMapping"
+    ]
+  },
+  {
+    "name": "CustomerService",
+    "classSet": [
+      "CustomerServiceApp",
+      "CustomerService",
+      "CustomerServiceImpl",
+      "CustomerServiceRest",
+      "CustomerServiceRestInteral",
+      "CustomerRedinessHealthCheck",
+      "CustomerLivenessHealthCheck",
+      "MilesResponse",
+      "LoginResponse",
+      "CustomerConfiuration",
+      "ConnectionManager",
+      "CustomerInfo",
+      "AddressInfo",
+      "CustomerLoader",
+      "CustomerLoaderRest",
+      "MongoProperties",
+      "KeyGenerator"
+    ]
+  },
+  {
+    "name": "MainService",
+    "classSet": [
+    ]
+  }
+]

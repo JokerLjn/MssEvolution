@@ -1,0 +1,66 @@
+﻿{
+  "services":[
+    {
+      "nanoentities":[
+        "Location.portCode"
+      ],
+      "id":"A",
+      "name":"Service A"
+    },
+    {
+      "nanoentities":[
+        "DeliveryHistory.handlingEvents",
+        "HandlingEvent.type",
+        "DeliveryHistory.cargoID",
+        "HandlingEvent.completeTime"
+      ],
+      "id":"B",
+      "name":"Service B"
+    },
+    {
+      "nanoentities":[
+        "Role.name"
+      ],
+      "id":"C",
+      "name":"Service C"
+    },
+    {
+      "nanoentities":[
+        "DeliverySpecification.arrivalTime"
+      ],
+      "id":"D",
+      "name":"Service D"
+    },
+    {
+      "nanoentities":[
+        "CustomerRepository.CustomerRepository",
+        "Customer.customerID",
+        "Customer.name"
+      ],
+      "id":"E",
+      "name":"Service E"
+    },
+    {
+      "nanoentities":[
+        "CarrierMovement.scheduleID"
+      ],
+      "id":"F",
+      "name":"Service F"
+    },
+    {
+      "nanoentities":[
+        "CargoRepository.CargoRepository",
+        "Cargo.trackingID",
+        "Cargo.status"
+      ],
+      "id":"G",
+      "name":"Service G"
+    }
+  ],
+  "relations":[
+
+  ],
+  "useCaseResponsibility":{
+
+  }
+}

@@ -1,0 +1,55 @@
+微服务系统：
+name = DDD Cargo
+microservices = [
+微服务Service A
+	 classList = [Location]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service B
+	 classList = [HandlingEventRepository]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service C
+	 classList = [CargoRepository]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service D
+	 classList = [CustomerAgreement, PriceModel]
+	 classRelationList = [ClassRelation(origin=CustomerAgreement, destination=PriceModel, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务Service E
+	 classList = [Role, Cargo]
+	 classRelationList = [ClassRelation(origin=Cargo, destination=Role, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务Service F
+	 classList = [DeliverySpecification]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service G
+	 classList = [Invoice, Customer]
+	 classRelationList = [ClassRelation(origin=Invoice, destination=Customer, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务Service H
+	 classList = [CustomerRepository]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service I
+	 classList = [CarrierMovement, HandlingEvent]
+	 classRelationList = [ClassRelation(origin=HandlingEvent, destination=CarrierMovement, type=ClassAssociation)]
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 0.5, cohesionDegree = 1.0, coupingDegree = 1.25
+newQualityScore = 1.0, cohesionDegree = 1.0, coupingDegree = 1.0
+decreasePercent = -1.0
+-----------------------------------
+mssCost = 95.84000000000002

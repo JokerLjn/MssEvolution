@@ -1,0 +1,274 @@
+[
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "className": "Order",
+    "classType": "Entity"
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "ID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "customerID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightId",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightInfo",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "status",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "addBookingOrder",
+      "params": [
+        {
+          "name": "customerID",
+          "type": "String"
+        },
+        {
+          "name": "flightId",
+          "type": "String"
+        },
+        {
+          "name": "flightInfo",
+          "type": "String"
+        }
+      ],
+      "returnType": "Order"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "payOrder",
+      "params": [
+        {
+          "name": "orderID",
+          "type": "String"
+        },
+        {
+          "name": "money",
+          "type": "double"
+        }
+      ],
+      "returnType": "boolean"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "finishOrder",
+      "params": [
+        {
+          "name": "orderID",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "returnType": "boolean"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "BookingService"
+      },
+      "destination": {
+        "name": "Order"
+      },
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "className": "Order"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 72,
+      "type": "SIMPLE",
+      "from": "BookingService",
+      "to": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "className": "AuthService"
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "className": "AuthServiceImpl"
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "className": "LoginREST",
+    "attribute": {
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "className": "AcmeAirConfiguration",
+    "attribute": {
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "className": "RESTCookieSessionFilter",
+    "attribute": {
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "className": "AuthService"
+  },
+  {
+    "obj": "OBJECT",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "className": "AuthServiceImpl"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 48,
+      "type": "SIMPLE",
+      "from":"LoginREST",
+      "to":"AuthService",
+      "method": "createSession"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 49,
+      "type": "SIMPLE",
+      "from":"AuthService",
+      "to":"KeyGenerator",
+      "method": "generate"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 50,
+      "type": "REPLY",
+      "from":"KeyGenerator",
+      "to":"AuthService",
+      "method": ""
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 51,
+      "type": "REPLY",
+      "from":"AuthService",
+      "to":"AuthService",
+      "method": "createSession"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 52,
+      "type": "SIMPLE",
+      "from":"AuthService",
+      "to":"AuthServiceImpl",
+      "method": "createSession"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 53,
+      "type": "REPLY",
+      "from":"AuthServiceImpl",
+      "to":"AuthService",
+      "method": ""
+    }
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "name": "cargo transport sequence",
+  "objects": [
+    "Customer",
+    "Cargo",
+    "DeliverySpecification",
+    "HandlingEvent",
+    "CarrierMovement",
+    "DeliveryHistory"
+  ],
+  "methodCalls": [
+    {
+      "num": 1,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "DeliverySpecification",
+      "method": "getInfo"
+    },
+    {
+      "num": 2,
+      "type": "REPLY",
+      "from": "DeliverySpecification",
+      "to": "Cargo",
+      "method": "getInfo"
+    },
+    {
+      "num": 3,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "Customer",
+      "method": "getInfo"
+    },
+    {
+      "num": 4,
+      "type": "REPLY",
+      "from": "Customer",
+      "to": "Cargo",
+      "method": "getInfo"
+    },
+    {
+      "num": 5,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "HandlingEvent",
+      "method": "customerHandle"
+    },
+    {
+      "num": 6,
+      "type": "SIMPLE",
+      "from": "HandlingEvent",
+      "to": "CarrierMovement",
+      "method": "carry"
+    },    {
+      "num": 7,
+      "type": "SIMPLE",
+      "from": "CarrierMovement",
+      "to": "DeliveryHistory",
+      "method": "addHistory"
+
+    },
+    {
+      "num": 8,
+      "type": "REPLY",
+      "from": "DeliveryHistory",
+      "to": "CarrierMovement",
+      "method": "addHistory"
+    },
+    {
+      "num": 9,
+      "type": "SIMPLE",
+      "from": "CarrierMovement",
+      "to": "HandlingEvent",
+      "method": "customerHandle"
+    },
+    {
+      "num": 10,
+      "type": "SIMPLE",
+      "from": "HandlingEvent",
+      "to": "Cargo",
+      "method": "finish"
+    }
+
+  ],
+  "combineClips": []
+}

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: MssEvoluation
+
+server:
+  port: 8888
+
+quality:
+  cohesionWeight: 0.5
+  coupingWeight: 0.5

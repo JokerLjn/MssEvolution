@@ -1,0 +1,92 @@
+{
+  "name": "cargo transport sequence",
+  "objects": [
+    "CustomerRepository",
+    "Customer",
+    "Cargo",
+    "CargoRepository",
+    "HandlingEvent",
+    "HandlingEventRepository",
+    "CarrierMovement"
+  ],
+  "methodCalls": [
+    {
+      "num": 1,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "CargoRepository",
+      "method": "findByCargoTrackingID"
+    },
+    {
+      "num": 2,
+      "type": "REPLY",
+      "from": "CargoRepository",
+      "to": "Cargo",
+      "method": "findByCargoTrackingID"
+    },
+    {
+      "num": 3,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "CustomerRepository",
+      "method": "findCustomerById"
+    },
+    {
+      "num": 4,
+      "type": "REPLY",
+      "from": "CustomerRepository",
+      "to": "Customer",
+      "method": "findCustomerById"
+    },
+    {
+      "num": 5,
+      "type": "REPLY",
+      "from": "Customer",
+      "to": "Cargo",
+      "method": "findCustomerById"
+    },
+    {
+      "num": 6,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "HandlingEvent",
+      "method": "customerHandle"
+    },
+    {
+      "num": 7,
+      "type": "SIMPLE",
+      "from": "HandlingEvent",
+      "to": "HandlingEventRepository",
+      "method": "addHandleRecord"
+    },
+    {
+      "num": 8,
+      "type": "SIMPLE",
+      "from": "HandlingEventRepository",
+      "to": "CarrierMovement",
+      "method": "carry"
+    },
+    {
+      "num": 9,
+      "type": "SIMPLE",
+      "from": "CarrierMovement",
+      "to": "HandlingEvent",
+      "method": "CustomerHandle"
+    },
+    {
+      "num": 10,
+      "type": "REPLY",
+      "from": "HandlingEvent",
+      "to": "Cargo",
+      "method": "CustomerHandle"
+    },
+    {
+      "num": 11,
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "CargoRepository",
+      "method": "updateCargo"
+    }
+  ],
+  "combineClips": []
+}

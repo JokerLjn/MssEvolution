@@ -1,0 +1,344 @@
+[
+  {
+    "type": "ADD",
+    "obj": "CLASS",
+    "className": "CustomerRepository",
+    "classType": "Control"
+  },
+  {
+    "type": "DELETE",
+    "obj": "METHOD",
+    "className": "Customer",
+    "method": {
+      "name": "getInfo"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CustomerRepository",
+    "method": {
+      "name": "findByCustomerID",
+      "params": [
+        {
+          "name": "customerID",
+          "type": "String"
+        }
+      ],
+      "returnType": "Customer"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CustomerRepository",
+    "method": {
+      "name": "findByName",
+      "params": [
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "returnType": "Customer"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "RELATION",
+    "relation": {
+      "origin": {
+        "name": "CustomerRepository"
+      },
+      "destination": {
+        "name": "Customer"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "CLASS",
+    "className": "CargoRepository",
+    "classType": "Control"
+  },
+  {
+    "type": "DELETE",
+    "obj": "METHOD",
+    "className": "Cargo",
+    "method": {
+      "name": "finish"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CargoRepository",
+    "method": {
+      "name": "findByCargoTrackingID",
+      "params": [
+        {
+          "name": "trackingID",
+          "type": "String"
+        }
+      ],
+      "returnType": "Cargo"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CargoRepository",
+    "method": {
+      "name": "updateCargo",
+      "params": [
+        {
+          "name": "status",
+          "type": "int"
+        },
+        {
+          "name": "stock",
+          "type": "int"
+        }
+      ],
+      "returnType": "void"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "RELATION",
+    "relation": {
+      "origin": {
+        "name": "CargoRepository"
+      },
+      "destination": {
+        "name": "Cargo"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "type": "UPDATE",
+    "obj": "RELATION",
+    "relation": {
+      "origin": {
+        "name": "Cargo"
+      },
+      "destination": {
+        "name": "DeliverySpecification"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "type": "DELETE",
+    "obj": "CLASS",
+    "className": "DeliveryHistory"
+  },
+  {
+    "type": "ADD",
+    "obj": "CLASS",
+    "className": "HandlingEventRepository",
+    "classType": "Control"
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "HandlingEventRepository",
+    "method": {
+      "name": "findByCargoIdTimeType",
+      "params": [
+        {
+          "name": "cargoId",
+          "type": "int"
+        },
+        {
+          "name": "time",
+          "type": "date"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "returnType": "HandlingEvent"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "HandlingEventRepository",
+    "method": {
+      "name": "findByCargoTrackingId",
+      "params": [
+        {
+          "name": "trackingId",
+          "type": "int"
+        }
+      ],
+      "returnType": "HandlingEvent"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "HandlingEventRepository",
+    "method": {
+      "name": "findByScheduleId",
+      "params": [
+        {
+          "name": "scheduleId",
+          "type": "int"
+        }
+      ],
+      "returnType": "HandlingEvent"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "HandlingEventRepository",
+    "method": {
+      "name": "addHandlingEvent",
+      "params": [
+        {
+          "name": "handlingEvent",
+          "type": "HandlingEvent"
+        }
+      ],
+      "returnType": "Cargo"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "HandlingEventRepository"
+      },
+      "destination": {
+        "name": "HandlingEvent"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "className": "CustomerRepository"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": 3,
+      "from": "Cargo",
+      "to": "Customer",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "3",
+      "type": "SIMPLE",
+      "from": "Cargo",
+      "to": "CargoRepository",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "4",
+      "type": "REPLY",
+      "from": "Cargo",
+      "to": "CargoRepository",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "4",
+      "type": "REPLY",
+      "from": "CustomerRepository",
+      "to": "Customer",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "5",
+      "type": "REPLY",
+      "from": "Customer",
+      "to": "Cargo",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "className": "HandlingEventRepository"
+  },
+  {
+    "obj": "MESSAGE",
+    "sequenceName": "cargo transport sequence",
+    "type": "DELETE",
+    "methodCall": {
+      "num": "6",
+      "type": "SIMPLE",
+      "from": "HandlingEvent",
+      "to": "CarrierMovement",
+      "method": "carry"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "7",
+      "type": "SIMPLE",
+      "from": "HandlingEvent",
+      "to": "HandlingEventRepository",
+      "method": "addHandleRecord"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "8",
+      "type": "REPLY",
+      "from": "HandlingEventRepository",
+      "to": "HandlingEvent",
+      "method": "addHandleRecord"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "cargo transport sequence",
+    "methodCall": {
+      "num": "9",
+      "type": "SIMPLE",
+      "from": "HandlingEvent",
+      "to": "CarrierMovement",
+      "method": "addHandleRecord"
+    }
+  }
+]

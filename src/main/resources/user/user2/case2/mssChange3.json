@@ -1,0 +1,350 @@
+[
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "ID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "customerID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "method": "payOrder"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "method": "finishOrder"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "interface": "/order/addBookingOrder",
+      "className": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "CustomerService",
+    "valueMap": {
+      "fromMs": "AuthService",
+      "toMs": "CustomerService",
+      "className": "ConnectionManager"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "CustomerService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "AuthService",
+      "className": "CustomerClient"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "FlightService",
+    "valueMap": {
+      "className": "LoaderRest",
+      "method": "loadDb"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "FlightService",
+    "valueMap": {
+      "interface": "/loader/getDb",
+      "class": "LoaderRest",
+      "method": "loadDb"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "CustomerService",
+    "valueMap": {
+      "fromMs": "AuthService",
+      "toMs": "CustomerService",
+      "className": "ConnectionManager"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "msName": "AuthService",
+    "valueMap": {
+      "className": "AuthService"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "msName": "AuthService",
+    "valueMap": {
+      "className": "AuthServiceImpl"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "msName": "AuthService",
+    "valueMap": {
+      "class": "loginRESt",
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "msName": "AuthService",
+    "valueMap": {
+      "class": "AcmeAirConfiguration",
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "msName": "AuthService",
+    "valueMap": {
+      "class": "RESTCookieSessionFilter",
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "attribute": "flightID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "attribute": "from"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "attribute": "to"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "attribute": "passengerNum"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "attribute": "price"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "attribute": "period"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "FlightInfo",
+      "method": "getFlightInfo"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "from": "BookingService",
+      "to": "FlightInfo",
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "from": "FlightService",
+      "to": "FlightInfo",
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "from": "FlightServiceImpl",
+      "to": "FlightInfo",
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "from": "Order",
+      "to": "FlightInfo",
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "UPDATE",
+    "msName": "BookingService",
+    "className": "FlightService",
+    "valueMap": {
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "UPDATE",
+    "msName": "BookingService",
+    "className": "FlightService",
+    "valueMap": {
+      "method": "getFlightByFlightId"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "className": "Order",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightInfo"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "BookingService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "BookingService",
+      "className": "FlightClient"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "BookingService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "BookingService",
+      "interfaceName": "/getFlightInfo"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "BookingService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "BookingService",
+      "interfaceName": "/getCustomer/id"
+    }
+  }
+]

@@ -1,0 +1,113 @@
+uml 原子变化到 mss 原子变化的映射：
+ClassChange{optType=ADD, optObj=CLASS, className='CustomerRepository', classType=Control} 
+MssAtomicChange{type=ADD, obj=MICROSERVICE, msName='CustomerRepositoryService',
+        valueMap={msName=CustomerRepositoryService}
+MssAtomicChange{type=ADD, obj=CLASS, msName='CustomerRepository',
+        valueMap={className=CustomerRepository}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='CustomerRepository', method=UmlMethod(name=findByCustomerID, params=[UmlAttribute(name=customerID, type=String, accessRight=null)], returnType=Customer, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='CustomerRepositoryService',
+        valueMap={method=UmlMethod(name=findByCustomerID, params=[UmlAttribute(name=customerID, type=String, accessRight=null)], returnType=Customer, accessRight=null)}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='CustomerRepository', method=UmlMethod(name=findByName, params=[UmlAttribute(name=name, type=String, accessRight=null)], returnType=Customer, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='CustomerRepositoryService',
+        valueMap={method=UmlMethod(name=findByName, params=[UmlAttribute(name=name, type=String, accessRight=null)], returnType=Customer, accessRight=null)}
+--------------
+RelationShipChange{optType=ADD, optObj=RELATION, relation=ClassRelation(origin=CustomerRepository, destination=Customer, type=ClassAssociation)}
+--------------
+ClassChange{optType=ADD, optObj=CLASS, className='CargoRepository', classType=Control} 
+MssAtomicChange{type=ADD, obj=MICROSERVICE, msName='CargoRepositoryService',
+        valueMap={msName=CargoRepositoryService}
+MssAtomicChange{type=ADD, obj=CLASS, msName='CargoRepository',
+        valueMap={className=CargoRepository}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='CargoRepository', method=UmlMethod(name=findByCargoTrackingID, params=[UmlAttribute(name=trackingID, type=String, accessRight=null)], returnType=Cargo, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='CargoRepositoryService',
+        valueMap={method=UmlMethod(name=findByCargoTrackingID, params=[UmlAttribute(name=trackingID, type=String, accessRight=null)], returnType=Cargo, accessRight=null)}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='CargoRepository', method=UmlMethod(name=updateCargo, params=[UmlAttribute(name=status, type=int, accessRight=null), UmlAttribute(name=stock, type=int, accessRight=null)], returnType=void, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='CargoRepositoryService',
+        valueMap={method=UmlMethod(name=updateCargo, params=[UmlAttribute(name=status, type=int, accessRight=null), UmlAttribute(name=stock, type=int, accessRight=null)], returnType=void, accessRight=null)}
+--------------
+RelationShipChange{optType=ADD, optObj=RELATION, relation=ClassRelation(origin=CargoRepository, destination=Cargo, type=ClassAssociation)}
+--------------
+MethodChange{optType=DELETE, optObj=METHOD, className='Customer', method=UmlMethod(name=getInfo, params=null, returnType=null, accessRight=null)} 
+MssAtomicChange{type=DELETE, obj=METHOD, msName='CustomerService',
+        valueMap={method=UmlMethod(name=getInfo, params=null, returnType=null, accessRight=null)}
+MssAtomicChange{type=DELETE, obj=INTERFACE, msName='CustomerService',
+        valueMap={interface=MsInterface(url=/customer/getInfo, type=GET, className=Customer, methodName=getInfo, msNameList=[TransportService])}
+--------------
+MethodChange{optType=DELETE, optObj=METHOD, className='Cargo', method=UmlMethod(name=finish, params=null, returnType=null, accessRight=null)} 
+MssAtomicChange{type=DELETE, obj=METHOD, msName='CargoService',
+        valueMap={method=UmlMethod(name=finish, params=null, returnType=null, accessRight=null)}
+--------------
+----------------------------------------
+
+演化方案为：
+MssAtomicChange{type=ADD, obj=MICROSERVICE, msName='CustomerRepositoryService',
+        valueMap={msName=CustomerRepositoryService}
+MssAtomicChange{type=ADD, obj=CLASS, msName='CustomerRepository',
+        valueMap={className=CustomerRepository}
+MssAtomicChange{type=ADD, obj=METHOD, msName='CustomerRepositoryService',
+        valueMap={method=UmlMethod(name=findByCustomerID, params=[UmlAttribute(name=customerID, type=String, accessRight=null)], returnType=Customer, accessRight=null)}
+MssAtomicChange{type=ADD, obj=METHOD, msName='CustomerRepositoryService',
+        valueMap={method=UmlMethod(name=findByName, params=[UmlAttribute(name=name, type=String, accessRight=null)], returnType=Customer, accessRight=null)}
+MssAtomicChange{type=ADD, obj=MICROSERVICE, msName='CargoRepositoryService',
+        valueMap={msName=CargoRepositoryService}
+MssAtomicChange{type=ADD, obj=CLASS, msName='CargoRepository',
+        valueMap={className=CargoRepository}
+MssAtomicChange{type=ADD, obj=METHOD, msName='CargoRepositoryService',
+        valueMap={method=UmlMethod(name=findByCargoTrackingID, params=[UmlAttribute(name=trackingID, type=String, accessRight=null)], returnType=Cargo, accessRight=null)}
+MssAtomicChange{type=ADD, obj=METHOD, msName='CargoRepositoryService',
+        valueMap={method=UmlMethod(name=updateCargo, params=[UmlAttribute(name=status, type=int, accessRight=null), UmlAttribute(name=stock, type=int, accessRight=null)], returnType=void, accessRight=null)}
+MssAtomicChange{type=DELETE, obj=METHOD, msName='CustomerService',
+        valueMap={method=UmlMethod(name=getInfo, params=null, returnType=null, accessRight=null)}
+MssAtomicChange{type=DELETE, obj=INTERFACE, msName='CustomerService',
+        valueMap={interface=MsInterface(url=/customer/getInfo, type=GET, className=Customer, methodName=getInfo, msNameList=[TransportService])}
+MssAtomicChange{type=DELETE, obj=METHOD, msName='CargoService',
+        valueMap={method=UmlMethod(name=finish, params=null, returnType=null, accessRight=null)}
+-----------------------------------------------------
+
+微服务系统：
+name = DDDCargo Microservice System
+microservices = [
+微服务CargoService
+	 classList = [Cargo, DeliveryHistory, DeliverySpecification]
+	 classRelationList = [ClassRelation(origin=DeliveryHistory, destination=Cargo, type=ClassAssociation), ClassRelation(origin=DeliverySpecification, destination=Cargo, type=ClassAssociation)]
+	 interfaceList = [MsInterface(url=/cargo/getInfo, type=GET, className=Cargo, methodName=getInfo, msNameList=[]), MsInterface(url=/history/add, type=POST, className=DeliveryHistory, methodName=addHistory, msNameList=[TransportService]), MsInterface(url=/history/search, type=POST, className=DeliveryHistory, methodName=searchHistory, msNameList=[])]
+, 
+微服务CustomerService
+	 classList = [Role, Customer]
+	 classRelationList = [ClassRelation(origin=Customer, destination=Role, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务TransportService
+	 classList = [HandlingEvent, CarrierMovement]
+	 classRelationList = [ClassRelation(origin=HandlingEvent, destination=CarrierMovement, type=ClassAssociation)]
+	 interfaceList = [MsInterface(url=/transport/handle, type=POST, className=HandlingEvent, methodName=handle, msNameList=[]), MsInterface(url=/transport/carry, type=POST, className=CarrierMovement, methodName=carry, msNameList=[])]
+, 
+微服务LocationService
+	 classList = [Location]
+	 classRelationList = []
+	 interfaceList = [MsInterface(url=/location/getByName, type=POST, className=Location, methodName=getLocation, msNameList=[TransportService, CargoService])]
+, 
+微服务CustomerRepositoryService
+	 classList = [CustomerRepository]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务CargoRepositoryService
+	 classList = [CargoRepository]
+	 classRelationList = []
+	 interfaceList = []
+]
+----------
+---------------------------------------------
+
+oldQualityScore = 0.5, cohesion = 1.0, couping = 2.0
+newQualityScore = 0.9166666666666666, cohesion = 1.0, couping = 1.1666666666666667
+decreasePercent = -0.8333333333333333
+
+mssChangeCost = 34.6
+---------------------------------------------------
+共用时 5.0E-5 min

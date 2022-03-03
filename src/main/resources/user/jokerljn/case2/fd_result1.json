@@ -1,0 +1,56 @@
+[
+  {
+    "name": "FlightService",
+    "classSet": [
+      "FlightService",
+      "FlightsREST",
+      "DateParam",
+      "AcmeAirApp",
+      "AirCodeMapping",
+      "AcmeAirConfiguration",
+      "FlightServiceImpl"
+    ]
+  },
+  {
+    "name": "BookingService",
+    "classSet": [
+      "BookingService",
+      "BookingsREST",
+      "Order",
+      "BookingServiceImpl"
+    ]
+  },
+  {
+    "name": "AuthService",
+    "classSet": [
+      "AuthService",
+      "AuthServiceImpl",
+      "LoginREST",
+      "RESTCookieSessionFilter",
+      "KeyGenerator"
+    ]
+  },
+  {
+    "name": "LoaderService",
+    "classSet": [
+      "LoaderREST",
+      "Loader",
+      "FlightLoader",
+      "BookingLoader",
+      "AirportCodeMapping",
+      "SessionLoader"
+    ]
+  },
+  {
+    "name": "CustomerService",
+    "classSet": [
+      "CustomerInfo",
+      "AddressInfo",
+      "CustomerREST",
+      "CustomerService",
+      "MongoConstants",
+      "ConnectionManager",
+      "CustomerServiceImpl"
+    ]
+  }
+]

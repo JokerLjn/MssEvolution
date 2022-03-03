@@ -1,0 +1,436 @@
+[
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "ID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "customerID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "method": "payOrder"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "className": "Order",
+      "method": "finishOrder"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "OrderService",
+    "valueMap": {
+      "interface": "/order/addBookingOrder",
+      "className": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "LoaderService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "LoaderService",
+      "className": "FlightLoader"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "LoaderService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "LoaderService",
+      "className": "CustomerLoader"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "LoaderService",
+    "valueMap": {
+      "fromMs": "BookingService",
+      "toMs": "LoaderService",
+      "className": "BookingLoader"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+      "className": "SessionLoader"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+      "className": "SessionLoader",
+      "method": "dropSessions"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+      "interface": "/loader/getDb",
+      "className": "BookingLoader",
+      "method": "loadDb"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "BookingsRestService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "BookingsRestService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "BookingService",
+      "interface": "/book/bookFlights"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "BookingsRestService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "BookingService",
+      "interface": "/book/byUser/{user}"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "CustomerServiceImplService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "CustomerServiceImplService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "CustomerServiceImplService",
+      "className": "CustomerServiceImpl"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "InfoService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "InfoService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "InfoService",
+      "className": "CustomerInfo"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "InfoService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "InfoService",
+      "className": "AddressInfo"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "AirportCodeMappingService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "AirportCodeMappingService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "AirportCodeMappingService",
+      "className": "AirportCodeMapping"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "FlightsRestService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "FlightsRestService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "FlightsRestService",
+      "className": "FlightsRest"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "FlightsRestService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "FlightsRestService",
+      "interface": "/flight/queryFlights"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "FlightsRestService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "FlightsRestService",
+      "interface": "/flight/getRewardFlights"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "ConnectionManagerService",
+      "className": "ConnectionManager"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "CustomerRestService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "CustomerRestService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "CustomerRestService",
+      "className": "CustomerRest"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "CustomerRestService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "CustomerRestService",
+      "interface": "/customer/byId/{custid}"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "AcmeAirConfigurationService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "AcmeAirConfigurationService",
+    "valueMap": {
+      "className": "AcmeAirConfiguration"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "MongoConstantsService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "MongoConstantsService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "MongoConstantsService",
+      "className": "MongoConstants"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "MongoConstantsService",
+    "valueMap": {
+      "interface": "/mongo/getProperties",
+      "className": "MongoConstants",
+      "method": "getProperties"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "FlightServiceImplService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "FlightServiceImplService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "FlightServiceImplService",
+      "className": "FlightServiceImpl"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "DatePramService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "DatePramService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "DatePramService",
+      "className": "DatePram"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "KeyGeneratorService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "KeyGeneratorService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "KeyGeneratorService",
+      "className": "KeyGenerator"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "KeyGeneratorService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "KeyGeneratorService",
+      "className": "FlightService"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "KeyGeneratorService",
+    "valueMap": {
+      "fromMs": "BookingService",
+      "toMs": "KeyGeneratorService",
+      "className": "BookingServiceImpl"
+    }
+  }
+]

@@ -1,0 +1,2726 @@
+{
+  "name":"Acmeair Mss",
+  "microservices":[
+    {
+      "name":"acmeair-authservice",
+      "interfaceList":[
+        {
+          "url": "/authService/login",
+          "type": "POST",
+          "className": "AuthServiceRest",
+          "methodName": "login",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        },
+        {
+          "url": "/authService/getJwk",
+          "type": "GET",
+          "className": "SecurityUtils",
+          "methodName": "getJwk",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        }
+      ],
+      "classRelationList":[
+        {
+          "origin":"CustomerClient",
+          "destination":"LoginResponse",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerClient",
+          "destination":"LoginFallbackHandler",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"LoginREST",
+          "destination":"CustomerClient",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"LoginREST",
+          "destination":"AuthService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"LoginREST",
+          "destination":"LoginResponse",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"LoginREST",
+          "destination":"AuthService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"LoginREST",
+          "destination":"CustomerClient",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"AuthServiceImpl",
+          "destination":"AuthService",
+          "type":"ClassInheritance"
+        }
+      ],
+      "classList":[
+        {
+          "methods":[],
+          "name":"AuthServiceApp",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "call",
+              "params": [],
+              "returnType": "HealthCheckResponse",
+              "accessRight": "public"
+            },
+            {
+              "name": "isServiceReachable",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "private"
+            }
+          ],
+          "name":"AuthHealthCheck",
+          "attributes":[
+            {
+              "name": "port",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "name": "hostName",
+              "type": "String",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "validateCustomer",
+              "params": [],
+              "returnType": "LoginResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerClient",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "init",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "private"
+            },
+            {
+              "name": "generateJwt",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getJwk",
+              "params": [],
+              "returnType": "RsaJsonWebKey",
+              "accessRight": "public"
+            },
+            {
+              "name": "isCustomerValidationDisabled",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ],
+          "name":"AuthService",
+          "attributes":[
+            {
+              "name": "jwk",
+              "type": "RsaJsonWebKey",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "createSession",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "countSessions",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "removeSession",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "initialization",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getSession",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropSessions",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "invalidateSession",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"AuthServiceImpl",
+          "attributes":[
+            {
+              "type": "MongoCollection<Document>",
+              "name": "customerSession",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "setValidated",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "isValidated",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ],
+          "name":"LoginResponse",
+          "attributes":[
+            {
+              "name": "validated",
+              "type": "boolean",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "handle",
+              "params": [],
+              "returnType": "LoginResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"LoginFallbackHandler",
+          "attributes":[
+
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getRuntimeInfo",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"SessionConfiguration",
+          "attributes":[
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "login",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getJwk",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "status",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "validateCustomer",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "private"
+            }
+          ],
+          "name":"LoginREST",
+          "attributes":[
+            {
+              "name": "secUtils",
+              "type": "SecurityUtils",
+              "accessRight": "private"
+            },
+            {
+              "name": "customerClient",
+              "type": "CustomerClient",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        }
+      ]
+    },
+    {
+      "name":"acmeair-flightservice",
+      "interfaceList":[
+        {
+          "url": "/flight/queryFlights",
+          "type": "POST",
+          "className": "flightService",
+          "methodName": "getFlightByAirportsAndDepartureDate",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        },
+        {
+          "url": "/flight/getRewardmiles",
+          "type": "POST",
+          "className": "flightService",
+          "methodName": "getRewardMiles",
+          "msNameList": [
+            "acmeair-bookingservice"
+          ]
+        }
+      ],
+      "classRelationList":[
+        {
+          "origin":"ConnectionManager",
+          "destination":"MongoProperties",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightServiceImpl",
+          "destination":"ConnectionManager",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightLoaderRest",
+          "destination":"FlightLoader",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightLoader",
+          "destination":"AirportCodeMapping",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightService",
+          "destination":"AirportCodeMapping",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightLoader",
+          "destination":"FlightService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightConfiguration",
+          "destination":"FlightService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightServiceRest",
+          "destination":"DateParam",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightLoader",
+          "destination":"FlightService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightServiceRest",
+          "destination":"FlightService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightServiceImpl",
+          "destination":"ConnectionManager",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightReadinessHealthCheck",
+          "destination":"FlightService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightConfiguration",
+          "destination":"FlightService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightReadinessHealthCheck",
+          "destination":"FlightService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightServiceImpl",
+          "destination":"KeyGenerator",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightServiceRest",
+          "destination":"FlightService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightServiceImpl",
+          "destination":"FlightService",
+          "type":"ClassInheritance"
+        },
+        {
+          "origin":"FlightServiceImpl",
+          "destination":"KeyGenerator",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"FlightLoaderRest",
+          "destination":"FlightLoader",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"ConnectionManager",
+          "destination":"MongoProperties",
+          "type":"ClassDependency"
+        }
+      ],
+      "classList":[
+        {
+          "methods":[
+            {
+              "name": "getTripFlights",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getRewardMiles",
+              "params": [],
+              "returnType": "MilesResponse",
+              "accessRight": "public"
+            },
+            {
+              "name": "status",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightServiceRest",
+          "attributes":[
+            {
+              "name": "flightService",
+              "type": "FlightService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "loadFlights",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropFlights",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "loadFlightDb",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "queryLoader",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getArrivalTime",
+              "params": [],
+              "returnType": "Date",
+              "accessRight": "private"
+            },
+            {
+              "name": "alreadyInCollection",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "private"
+            }
+          ],
+          "name":"FlightLoader",
+          "attributes":[
+            {
+              "name": "flightService",
+              "type": "FlightService",
+              "accessRight": "protected"
+            },
+            {
+              "name": "numDaysToLoad",
+              "type": "Short",
+              "accessRight": "private"
+            },
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getMiles",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "setMiles",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"MilesResponse",
+          "attributes":[
+            {
+              "name": "miles",
+              "type": "long",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "getFlight",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightSegment",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightBySegment",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "countFlights",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightByFlightId",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "storeFlightSegment",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "countFlightsSegment",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropFlights",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightByAirportsAndDepartureDate",
+              "params": [],
+              "returnType": "List<String>",
+              "accessRight": "public"
+            },
+            {
+              "name": "countAirports",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "createAirportCodeMapping",
+              "params": [],
+              "returnType": "AirportCodeMapping",
+              "accessRight": "public"
+            },
+            {
+              "name": "createNewFlight",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "storeAirportMapping",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getServiceType",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "isPopulated",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            },
+            {
+              "name": "isConnected",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightService",
+          "attributes":[
+            {
+              "name": "originAndDestPortToSegmentCache",
+              "type": "ConCurrentHashMap<String, List<String>>",
+              "accessRight": "private"
+            },
+            {
+              "name": "flightSegmentAndDataToFlightCache",
+              "type": "ConCurrentHashMap<String, List<String>>",
+              "accessRight": "private"
+            },
+            {
+              "name": "flightPKToFlightCache",
+              "type": "ConCurrentHashMap<String, String>",
+              "accessRight": "private"
+            },
+            {
+              "name": "flightSegmentToRewardsCache",
+              "type": "ConCurrentHashMap<String, Long>",
+              "accessRight": "private"
+            },
+            {
+              "name": "userFlightDataRelatedCaching",
+              "type": "boolean",
+              "accessRight": "private"
+            },
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "toJson",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getAirportName",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "setAirportCode",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getAirportCode",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "setAirportName",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"AirportCodeMapping",
+          "attributes":[
+            {
+              "type": "String",
+              "name": "id",
+              "accessRight": "private"
+            },
+            {
+              "type": "String",
+              "name": "airportName",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "getFlight",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightSegment",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightBySegment",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "countFlights",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightByFlightId",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "storeFlightSegment",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "countFlightsSegment",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropFlights",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getFlightByAirportsAndDepartureDate",
+              "params": [],
+              "returnType": "List<String>",
+              "accessRight": "public"
+            },
+            {
+              "name": "countAirports",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "createAirportCodeMapping",
+              "params": [],
+              "returnType": "AirportCodeMapping",
+              "accessRight": "public"
+            },
+            {
+              "name": "createNewFlight",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "storeAirportMapping",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getServiceType",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "isPopulated",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            },
+            {
+              "name": "isConnected",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightServiceImpl",
+          "attributes":[
+            {
+              "type": "MongoCollection<Document>",
+              "name": "flight",
+              "accessRight": "private"
+            },
+            {
+              "type": "MongoCollection<Document>",
+              "name": "airportCodeMapping",
+              "accessRight": "private"
+            },
+            {
+              "type": "KeyGenerator",
+              "name": "keyGenerator",
+              "accessRight": "protected"
+            },
+            {
+              "type": "MongoCollection<Document>",
+              "name": "flightSegment",
+              "accessRight": "private"
+            },
+            {
+              "type": "ConnectionManager",
+              "name": "connectionManager",
+              "accessRight": "private"
+            },
+            {
+              "type": "boolean",
+              "name": "isPopulated",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[],
+          "name":"MongoProperties",
+          "attributes":[
+            {
+              "name": "maxConnectionIdleTime",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "password",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "maxWaitTime",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "database",
+              "type": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "host",
+              "type": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "connectionsPerHost",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "username",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "port",
+              "type": "Integer",
+              "accessRight": "public"
+            },
+            {
+              "name": "sslEnabled",
+              "type": "Optional<Boolean>",
+              "accessRight": "public"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "call",
+              "params": [],
+              "returnType": "HealthCheckResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightReadinessHealthCheck",
+          "attributes":[
+            {
+              "name": "flightService",
+              "type": "FlightService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getDb",
+              "params": [],
+              "returnType": "MongoDatabase",
+              "accessRight": "public"
+            }
+          ],
+          "name":"ConnectionManager",
+          "attributes":[
+            {
+              "name": "mongoProps",
+              "type": "MongoProperties",
+              "accessRight": "private"
+            },
+            {
+              "name": "db",
+              "type": "MongoDatabase",
+              "accessRight": "private"
+            },
+            {
+              "name": "mongoUri",
+              "type": "MongoClientURI",
+              "accessRight": "private"
+            },
+            {
+              "name": "vcapJsonString",
+              "type": "Optional<String>",
+              "accessRight": "private"
+            },
+            {
+              "name": "mongoClient",
+              "type": "MongoClient",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "countFlightSegments",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "countFlights",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getActiveDataServiceInfo",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "countAirports",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getRuntimeInfo",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightConfiguration",
+          "attributes":[
+            {
+              "name": "flightService",
+              "type": "FlightService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getDate",
+              "params": [],
+              "returnType": "Date",
+              "accessRight": "public"
+            }
+          ],
+          "name":"DateParam",
+          "attributes":[
+            {
+              "name": "formatter",
+              "type": "DateTimeFormatter",
+              "accessRight": "private"
+            },
+            {
+              "name": "ZERO",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "name": "date",
+              "type": "Date",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[],
+          "name":"FlightServiceApp",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "loadDb",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "queryLoader",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightLoaderRest",
+          "attributes":[
+            {
+              "name": "loader",
+              "type": "FlightLoader",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "generate",
+              "params": [],
+              "returnType": "Object",
+              "accessRight": "public"
+            }
+          ],
+          "name":"KeyGenerator",
+          "attributes":[],
+          "type":"Control"
+        }
+      ]
+    },
+    {
+      "name":"acmeair-bookingservice",
+      "interfaceList":[
+        {
+          "url": "/booking/bookflights",
+          "type": "POST",
+          "className": "BookService",
+          "methodName": "bookFlight",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        },
+        {
+          "url": "/booking/byuser/{user}",
+          "type": "GET",
+          "className": "BookService",
+          "methodName": "getBookingsByUser",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        },
+        {
+          "url": "/booking/cancelbooking",
+          "type": "POST",
+          "className": "BookService",
+          "methodName": "cancelBooking",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        }
+      ],
+      "classRelationList":[
+        {
+          "origin":"ConnectionManager",
+          "destination":"MongoProperties",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerClient",
+          "destination":"MilesResponse",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"CustomerClient",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingServiceRest",
+          "destination":"RewardTracker",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"BookingService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"MilesResponse",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"FlightClient",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerClient",
+          "destination":"LongFallbackHandler",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingLoader",
+          "destination":"BookingService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingServiceImpl",
+          "destination":"BookingService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"CustomerClient",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingServiceRest",
+          "destination":"BookingService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingConfiguration",
+          "destination":"BookingService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingLoaderRest",
+          "destination":"BookingLoader",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingServiceImpl",
+          "destination":"BookingService",
+          "type":"ClassRealization"
+        },
+        {
+          "origin":"FlightClient",
+          "destination":"LongFallbackHandler",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingConfiguration",
+          "destination":"BookingService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"LongFallbackHandler",
+          "destination":"MilesResponse",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"ConnectionManager",
+          "destination":"MongoProperties",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingServiceRest",
+          "destination":"BookingService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingLoaderRest",
+          "destination":"BookingLoader",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingServiceImpl",
+          "destination":"ConnectionManager",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingReadinessHealthCheck",
+          "destination":"BookingService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingLoader",
+          "destination":"BookingService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"FlightClient",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingServiceImpl",
+          "destination":"ConnectionManager",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingServiceImpl",
+          "destination":"KeyGenerator",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingReadinessHealthCheck",
+          "destination":"BookingService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"RewardTracker",
+          "destination":"BookingService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"FlightClient",
+          "destination":"MilesResponse",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"BookingServiceImpl",
+          "destination":"KeyGenerator",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"BookingServiceRest",
+          "destination":"RewardTracker",
+          "type":"ClassAssociation"
+        }
+      ],
+      "classList":[
+        {
+          "methods":[
+            {
+              "name": "getBookingByUser",
+              "params": [],
+              "returnType": "List<String>",
+              "accessRight": "public"
+            },
+            {
+              "name": "count",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "bookFlight",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropBookings",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getBooking",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getServiceType",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "cancelBooking",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "isConnected",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingService",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getMiles",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "setMiles",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"MilesResponse",
+          "attributes":[
+            {
+              "name": "miles",
+              "type": "long",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "loadDb",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingLoaderRest",
+          "attributes":[
+            {
+              "name": "loader",
+              "type": "BookingLoader",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "call",
+              "params": [],
+              "returnType": "HealthCheckResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingReadinessHealthCheck",
+          "attributes":[
+            {
+              "name": "bookingService",
+              "type": "BookingService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "updateRewardMiles",
+              "params": [],
+              "returnType": "CompletionStage<Long>",
+              "accessRight": "public"
+            }
+          ],
+          "name":"RewardTracker",
+          "attributes":[
+            {
+              "name": "flightClient",
+              "type": "FlightClient",
+              "accessRight": "private"
+            },
+            {
+              "name": "customerClient",
+              "type": "CustomerClient",
+              "accessRight": "private"
+            },
+            {
+              "name": "bs",
+              "type": "BookingService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getRewardMiles",
+              "params": [],
+              "returnType": "MilesResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"FlightClient",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[],
+          "name":"BookingServiceApp",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "handle",
+              "params": [],
+              "returnType": "MilesResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"LongFallbackHandler",
+          "attributes":[
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "countBookings",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getActiveDataServiceInfo",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getRuntimeInfo",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingConfiguration",
+          "attributes":[
+            {
+              "name": "bookingService",
+              "type": "BookingService",
+              "accessRight": "private"
+            },
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "clearBookingDb",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingLoader",
+          "attributes":[
+            {
+              "name": "bookingService",
+              "type": "BookingService",
+              "accessRight": "protected"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[],
+          "name":"MongoProperties",
+          "attributes":[
+            {
+              "name": "maxConnectionIdleTime",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "password",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "maxWaitTime",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "database",
+              "type": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "host",
+              "type": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "connectionsPerHost",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "username",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "port",
+              "type": "Integer",
+              "accessRight": "public"
+            },
+            {
+              "name": "sslEnabled",
+              "type": "Optional<Boolean>",
+              "accessRight": "public"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "cancelBookingByNumber",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getBookingByUser",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "bookFlights",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "status",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingServiceRest",
+          "attributes":[
+            {
+              "name": "rewardTracker",
+              "type": "RewardTracker",
+              "accessRight": "protected"
+            },
+            {
+              "name": "bs",
+              "type": "BookingService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "getDb",
+              "params": [],
+              "returnType": "MongoDatabase",
+              "accessRight": "public"
+            }
+          ],
+          "name":"ConnectionManager",
+          "attributes":[
+            {
+              "name": "mongoProps",
+              "type": "MongoProperties",
+              "accessRight": "private"
+            },
+            {
+              "name": "db",
+              "type": "MongoDatabase",
+              "accessRight": "private"
+            },
+            {
+              "name": "mongoUri",
+              "type": "MongoClientURI",
+              "accessRight": "private"
+            },
+            {
+              "name": "vcapJsonString",
+              "type": "Optional<String>",
+              "accessRight": "private"
+            },
+            {
+              "name": "mongoClient",
+              "type": "MongoClient",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "updateCustomerTotalMiles",
+              "params": [],
+              "returnType": "MilesResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerClient",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getBookingByUser",
+              "params": [],
+              "returnType": "List<String>",
+              "accessRight": "public"
+            },
+            {
+              "name": "count",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "bookFlight",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropBookings",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getBooking",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getServiceType",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "cancelBooking",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "initialization",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "isConnected",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ],
+          "name":"BookingServiceImpl",
+          "attributes":[
+            {
+              "name": "keyGenerator",
+              "type": "KeyGenerator",
+              "accessRight": "private"
+            },
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            },
+            {
+              "name": "bookingCollection",
+              "type": "MongoCollection<Document>",
+              "accessRight": "private"
+            },
+            {
+              "name": "configuredTracer",
+              "type": "Tracer",
+              "accessRight": "protected"
+            },
+            {
+              "name": "connectionManager",
+              "type": "ConnectionManager",
+              "accessRight": "protected"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "generate",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"KeyGenerator",
+          "attributes":[],
+          "type":"Control"
+        }
+      ]
+    },
+    {
+      "name":"acmeair-customerservice",
+      "interfaceList":[
+        {
+          "url": "/customer/byid/{custid}",
+          "type": "GET",
+          "className": "customerService",
+          "methodName": "getCustomerByUsername",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        },
+        {
+          "url": "/customer/byid/{custid}",
+          "type": "POST",
+          "className": "customerService",
+          "methodName": "updateCustomer",
+          "msNameList": [
+            "acmeair-mainservice"
+          ]
+        },
+        {
+          "url": "/interal/{validateid}",
+          "type": "POST",
+          "className": "customerService",
+          "methodName": "validateCustomer",
+          "msNameList": [
+            "acmeair-authservice"
+          ]
+        },
+        {
+          "url": "/interal/updateCustomerTotalMiles/{custid}",
+          "type": "POST",
+          "className": "customerService",
+          "methodName": "updateCustomer",
+          "msNameList": [
+            "acmeair-bookingservice"
+          ]
+        }
+      ],
+      "classRelationList":[
+        {
+          "origin":"ConnectionManager",
+          "destination":"MongoProperties",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerService",
+          "destination":"KeyGenerator",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerLoader",
+          "destination":"CustomerService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerServiceRest",
+          "destination":"CustomerInfo",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerConfiguration",
+          "destination":"CustomerService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerServiceImpl",
+          "destination":"ConnectionManager",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerReadinessHealthCheck",
+          "destination":"CustomerService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerConfiguration",
+          "destination":"CustomerService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerLoader",
+          "destination":"CustomerService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerService",
+          "destination":"KeyGenerator",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerServiceRestInternal",
+          "destination":"CustomerService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerServiceRest",
+          "destination":"CustomerService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerServiceRest",
+          "destination":"CustomerService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"ConnectionManager",
+          "destination":"MongoProperties",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerServiceRestInternal",
+          "destination":"CustomerService",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerServiceImpl",
+          "destination":"CustomerService",
+          "type":"ClassInheritance"
+        },
+        {
+          "origin":"CustomerService",
+          "destination":"AddressInfo",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerReadinessHealthCheck",
+          "destination":"CustomerService",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerServiceImpl",
+          "destination":"AddressInfo",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerLoaderRest",
+          "destination":"CustomerLoader",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerServiceImpl",
+          "destination":"ConnectionManager",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerLoaderRest",
+          "destination":"CustomerLoader",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerServiceImpl",
+          "destination":"CustomerInfo",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerInfo",
+          "destination":"AddressInfo",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"CustomerInfo",
+          "destination":"AddressInfo",
+          "type":"ClassDependency"
+        },
+        {
+          "origin":"CustomerService",
+          "destination":"CustomerInfo",
+          "type":"ClassDependency"
+        }
+      ],
+      "classList":[
+        {
+          "methods":[
+            {
+              "name": "updateCustomer",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCustomerByUsernameAndPassword",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCustomerByUsername",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "validateCustomer",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            },
+            {
+              "name": "count",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "createCustomer",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "createAddress",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCustomer",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropCustomers",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "isPopulated",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            },
+            {
+              "name": "isConnected",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            },
+            {
+              "name": "getServiceType",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerService",
+          "attributes":[
+            {
+              "name": "keyGenerator",
+              "type": "KeyGenerator",
+              "accessRight": "private"
+            },
+            {
+              "name": "DAYS_TO_ALLOW_SESSION",
+              "type": "int",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "validateCustomer",
+              "params": [],
+              "returnType": "LoginResponse",
+              "accessRight": "public"
+            },
+            {
+              "name": "updateCustomerTotalMiles",
+              "params": [],
+              "returnType": "MilesResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerServiceRestInternal",
+          "attributes":[
+            {
+              "name": "customerService",
+              "type": "CustomerService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "getMiles",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "setMiles",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"MilesResponse",
+          "attributes":[
+            {
+              "name": "miles",
+              "type": "long",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "call",
+              "params": [],
+              "returnType": "HealthCheckResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerLivenessHealthCheck",
+          "attributes":[
+            {
+              "name": "customerService",
+              "type": "CustomerService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "putCustomer",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCustomer",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "status",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerServiceRest",
+          "attributes":[
+            {
+              "name": "customerService",
+              "type": "CustomerService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "queryLoader",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "loadDb",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerLoaderRest",
+          "attributes":[
+            {
+              "name": "customerLoader",
+              "type": "CustomerLoader",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[],
+          "name":"CustomerServiceApp",
+          "attributes":[],
+          "type":"Control"
+        },
+        {
+          "methods":[],
+          "name":"MongoProperties",
+          "attributes":[
+            {
+              "name": "maxConnectionIdleTime",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "password",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "maxWaitTime",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "database",
+              "type": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "host",
+              "type": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "connectionsPerHost",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "username",
+              "type": "Optional<Integer>",
+              "accessRight": "public"
+            },
+            {
+              "name": "port",
+              "type": "Integer",
+              "accessRight": "public"
+            },
+            {
+              "name": "sslEnabled",
+              "type": "Optional<Boolean>",
+              "accessRight": "public"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "setPhoneNumber",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setAddress",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setStatus",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setMiles_ytd",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setPassword",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "set_id",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setTotal_miles",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setPhoneNumberType",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getPhoneNumber",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getAddress",
+              "params": [],
+              "returnType": "AddressInfo",
+              "accessRight": "public"
+            },
+            {
+              "name": "getStatus",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getMiles_ytd",
+              "params": [],
+              "returnType": "int",
+              "accessRight": "public"
+            },
+            {
+              "name": "getPassword",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "get_id",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getTotal_miles",
+              "params": [],
+              "returnType": "int",
+              "accessRight": "public"
+            },
+            {
+              "name": "getPhoneNumberType",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerInfo",
+          "attributes":[
+            {
+              "name": "total_miles",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "name": "_id",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "miles_ytd",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "name": "phoneNumber",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "password",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "phoneNumberType",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "status",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "serialVersionUID",
+              "type": "long",
+              "accessRight": "private"
+            },
+            {
+              "name": "address",
+              "type": "AddressInfo",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "isValidated",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            },
+            {
+              "name": "setValidated",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"LoginResponse",
+          "attributes":[
+            {
+              "name": "validated",
+              "type": "boolean",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "getDb",
+              "params": [],
+              "returnType": "MongoDatabase",
+              "accessRight": "public"
+            }
+          ],
+          "name":"ConnectionManager",
+          "attributes":[
+            {
+              "name": "mongoProps",
+              "type": "MongoProperties",
+              "accessRight": "private"
+            },
+            {
+              "name": "db",
+              "type": "MongoDatabase",
+              "accessRight": "private"
+            },
+            {
+              "name": "mongoUri",
+              "type": "MongoClientURI",
+              "accessRight": "private"
+            },
+            {
+              "name": "vcapJsonString",
+              "type": "Optional<String>",
+              "accessRight": "private"
+            },
+            {
+              "name": "mongoClient",
+              "type": "MongoClient",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "setPostalCode",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setStreetAddress2",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCity",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getStateProvince",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setStreetAddress1",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCountry",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getPostalCode",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "setCity",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getStreetAddress2",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "setStateProvince",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "setCountry",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getStreetAddress",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"AddressInfo",
+          "attributes":[
+            {
+              "type": "String",
+              "name": "streetAddress2",
+              "accessRight": "private"
+            },
+            {
+              "name": "stateProvince",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "country",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "city",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "name": "postalCode",
+              "type": "String",
+              "accessRight": "private"
+            },
+            {
+              "type": "String",
+              "name": "streetAddress1",
+              "accessRight": "private"
+            },
+            {
+              "type": "long",
+              "name": "serialVersionUID",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "updateCustomer",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCustomerByUsername",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "count",
+              "params": [],
+              "returnType": "Long",
+              "accessRight": "public"
+            },
+            {
+              "name": "createCustomer",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "createAddress",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "getCustomer",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "dropCustomers",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            },
+            {
+              "name": "initialization",
+              "params": [],
+              "returnType": "void",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerServiceImpl",
+          "attributes":[
+            {
+              "name": "customer",
+              "type": "MongoCollection<Document>",
+              "accessRight": "private"
+            },
+            {
+              "name": "connectionManager",
+              "type": "ConnectionManager",
+              "accessRight": "private"
+            },
+            {
+              "name": "isPopulated",
+              "type": "boolean",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "call",
+              "params": [],
+              "returnType": "HealthCheckResponse",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerReadinessHealthCheck",
+          "attributes":[
+            {
+              "name": "customerService",
+              "type": "CustomerService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "queryLoader",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            },
+            {
+              "name": "loadCustomerDb",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerLoader",
+          "attributes":[
+            {
+              "name": "customerService",
+              "type": "CustomerService",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Control"
+        },
+        {
+          "methods":[
+            {
+              "name": "countCustomer",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getActiveDataServiceInfo",
+              "params": [],
+              "returnType": "Response",
+              "accessRight": "public"
+            },
+            {
+              "name": "getRuntimeInfo",
+              "params": [],
+              "returnType": "String",
+              "accessRight": "public"
+            }
+          ],
+          "name":"CustomerConfiguration",
+          "attributes":[
+            {
+              "name": "customerService",
+              "type": "CustomerService",
+              "accessRight": "private"
+            },
+            {
+              "name": "logger",
+              "type": "Logger",
+              "accessRight": "private"
+            }
+          ],
+          "type":"Entity"
+        },
+        {
+          "methods":[
+            {
+              "name": "generate",
+              "params": [],
+              "returnType": "Object",
+              "accessRight": "public"
+            }
+          ],
+          "name":"KeyGenerator",
+          "attributes":[],
+          "type":"Control"
+        }
+      ]
+    },
+    {
+      "name": "acmeair-mainservice",
+      "interfaceList": [],
+      "classRelationList": [],
+      "classList": []
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+[
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "FlightService",
+    "valueMap": {
+      "fromMs": "AuthService",
+      "toMs": "FlightService",
+      "className": "AcmeAirApp"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "FlightService",
+    "valueMap": {
+      "className": "AcmeAirConfiguration"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "ID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "customerID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "attribute": "flightInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "method": "payOrder"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "className": "Order",
+      "method": "finishOrder"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "BookingService",
+    "valueMap": {
+      "interface": "/order/addBookingOrder",
+      "className": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "AuthService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "AuthService",
+      "className": "FlightServiceImpl"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "AuthService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "AuthService",
+      "className": "CustomerService"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "AuthService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "AuthService",
+      "className": "CustomerREST"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "AuthService",
+    "valueMap": {
+      "fromMs": "BookingService",
+      "toMs": "AuthService",
+      "className": "BookingServiceImpl"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "AuthService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "AuthService",
+      "className": "KeyGenerator"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "LoaderService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "LoaderService",
+      "className": "AirportCodeMapping"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "LoaderService",
+    "valueMap": {
+      "fromMs": "BookingService",
+      "toMs": "LoaderService",
+      "className": "BookingLoader"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "LoaderService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "LoaderService",
+      "className": "FlightLoader"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+      "className": "SessionLoader"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+      "method": "dropSession"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "LoaderService",
+    "valueMap": {
+      "className": "LoaderRest"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "LoaderRest",
+    "valueMap": {
+      "method": "loadDb"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "TransportService",
+    "valueMap": {
+      "interface": "/loader/getDb",
+      "class": "LoaderRest",
+      "method": "loadDb"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "InfoService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "InfoService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "InfoService",
+      "className": "CustomerInfo"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "InfoService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "InfoService",
+      "className": "AddressInfo"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "InfoService",
+    "valueMap": {
+      "interface": "/info/get",
+      "class": "CustomerInfo",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+      "fromMs": "AuthService",
+      "toMs": "ConnectionManagerService",
+      "className": "ConnectionManager"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+      "fromMs": "FlightService",
+      "toMs": "ConnectionManagerService",
+      "className": "MongoConstants"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "ConnectionManagerService",
+      "className": "CustomerServiceImpl"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "ConnectionManagerService",
+    "valueMap": {
+      "fromMs": "AuthService",
+      "toMs": "ConnectionManagerService",
+      "className": "AuthServiceImpl"
+    }
+  }
+]

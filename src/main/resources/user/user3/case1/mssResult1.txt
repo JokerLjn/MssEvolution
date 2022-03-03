@@ -1,0 +1,25 @@
+微服务系统：
+name = DDD Cargo
+microservices = [
+微服务CustomerService
+	 classList = [Role, Customer, CustomerRepository]
+	 classRelationList = [ClassRelation(origin=Customer, destination=Role, type=ClassAssociation), ClassRelation(origin=CustomerRepository, destination=Customer, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务CargoService
+	 classList = [Cargo, DeliverySpecification, CargoRepository]
+	 classRelationList = [ClassRelation(origin=DeliverySpecification, destination=Cargo, type=ClassAssociation), ClassRelation(origin=CargoRepository, destination=Cargo, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务DeliveryService
+	 classList = [CarrierMovement, HandlingEvent, Location]
+	 classRelationList = [ClassRelation(origin=HandlingEvent, destination=CarrierMovement, type=ClassAssociation), ClassRelation(origin=CarrierMovement, destination=Location, type=ClassAssociation)]
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 0.5, cohesionDegree = 1.0, coupingDegree = 1.25
+newQualityScore = 0.6666666666666666, cohesionDegree = 1.0, coupingDegree = 1.6666666666666667
+decreasePercent = -0.33333333333333326
+-----------------------------------
+mssCost = 23.68

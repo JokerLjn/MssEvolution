@@ -1,0 +1,89 @@
+graph demo {
+	fontname="Microsoft YaHei";
+	edge [fontname="Microsoft YaHei", len=3];
+	node [fontname="Microsoft YaHei"];
+
+	// edges from method to class
+	a -- b;
+	a -- c;
+
+	d -- c [weight=2, label="2"];
+
+	e -- f;
+
+	g -- h [weight=2, label="2"];
+
+	i -- h;
+
+	j -- g;
+
+	n -- o [weight=2, label="2"];
+
+	q -- p;
+
+	r -- p;
+
+	s -- d1;
+
+	s -- d2;
+
+	s -- d3;
+
+	s -- d4;
+
+	s -- d5;
+
+	u -- v [label="2", weight=2];
+
+	w -- x [label="2", weight=2];
+
+	y -- x;
+
+	y -- z;
+
+	healthFile -- drugInfo;
+	healthFile -- x;
+	healthFile -- z;
+	healthFile -- v;
+	healthFile -- b;
+
+    // nodes
+    // nurse
+	a [label="NuesrService.helpTakeDrug", fontcolor="red", shape=box];
+	b [label="MedicineInfo"];
+	c [label="NurseCareRecord"];
+	d [label="NuesrService.careOldMan", fontcolor="red", shape=box];
+	e [label="Nurse.getInfo", fontcolor="red", shape=box];
+	f [label="NurseLevel"];
+	g [label="NuesrOrder.addOrder", fontcolor="red", shape=box];
+	h [label="OrderItem"];
+	i [label="NurseServiceEvaluate.addRecord", fontcolor="red", shape=box];
+	j [label="NursePayRecord.addRecord", fontcolor="red", shape=box];
+	k [label="NurseReserveRecord"];
+	l [label="Oldman"];
+	// doctor
+	m [label="HomeDoctor"];
+	n [label="DoctorService.checkOldman", fontcolor="red", shape=box];
+	o [label="DoctorVisitRecord"];
+	p [label="DoctorOrder"];
+	q [label="DoctorPayRecord.addRecord", fontcolor="red", shape=box];
+	r [label="DoctorEvaluate.addRecord", fontcolor="red", shape=box];
+	d1 [label="WristBand"];
+	d2 [label="BloodPressure"];
+	d3 [label="BloodSugar"];
+	d4 [label="BloodLipid"];
+	d5 [label="HeartRate"];
+	s [label="HealthWarning.collectData", fontcolor="red", shape=box];
+	// sick treat
+	t [label="Hospital"];
+	u [label="HealthEvaluate.healthEvaluate", fontcolor="red", shape=box];
+	v [label="HealthInfo"];
+	w [label="SickTreat.treatment", fontcolor="red", shape=box];
+	x [label="TreatRecord"];
+	y [label="DataAnalyze.dataAnalyze", fontcolor="red", shape=box];
+	z [label="DailyInfo"];
+	drug [label="Drug"];
+	drugInfo [label="DrugInfo"];
+	healthFile [label="HealthFile.getInfo"];
+
+}

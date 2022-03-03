@@ -1,0 +1,110 @@
+微服务系统：
+name = AcmeAir
+microservices = [
+微服务Service A
+	 classList = [BookingLoader, FlightLoader, SessionLoader, CustomerLoader]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service B
+	 classList = [Order]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service C
+	 classList = [LoginREST]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service D
+	 classList = [CustomerInfo, AddressInfo]
+	 classRelationList = [ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassAssociation), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务Service E
+	 classList = [FlightsREST]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service F
+	 classList = [BookingsREST]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service G
+	 classList = [CustomerServiceImpl]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service H
+	 classList = [AirportCodeMapping]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service I
+	 classList = [AcmeAirConfiguration]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service J
+	 classList = [ConnectionManager]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service K
+	 classList = [CustomerREST]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service L
+	 classList = [FlightServiceImpl]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service M
+	 classList = [DateParam]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service N
+	 classList = [BookingService]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service O
+	 classList = [CustomerService]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service P
+	 classList = [MongoConstants]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service Q
+	 classList = [FlightService, BookingServiceImpl, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=BookingServiceImpl, destination=FlightService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=FlightService, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassAssociation)]
+	 interfaceList = []
+, 
+微服务Service R
+	 classList = [LoaderREST, Loader]
+	 classRelationList = [ClassRelation(origin=LoaderREST, destination=Loader, type=ClassAssociation), ClassRelation(origin=LoaderREST, destination=Loader, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务Service S
+	 classList = [RESTCookieSessionFilter]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务Service T
+	 classList = [AcmeAirApp]
+	 classRelationList = []
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 1.0150735294117652, cohesionDegree = 1.2301470588235293, coupingDegree = 9.2
+newQualityScore = 4.1729166666666675, cohesionDegree = 1.0458333333333334, coupingDegree = 2.7
+decreasePercent = -3.1109501388385836
+-----------------------------------
+mssCost = 155.14

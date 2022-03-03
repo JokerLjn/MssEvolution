@@ -1,0 +1,465 @@
+{
+  "name": "new Cargo Tracking",
+  "classList": [
+    {
+      "name": "Cargo",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "trackingID",
+          "type": "int",
+          "accessRight": "private"
+        },
+        {
+          "type": "int",
+          "name": "status",
+          "accessRight": "private"
+        },
+        {
+          "type": "int",
+          "name": "stock",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "CargoRepository",
+      "type": "Control",
+      "attributes": [],
+      "methods": [
+        {
+          "name": "findByCargoTrackingID",
+          "params": [
+            {
+              "name": "trackingID",
+              "type": "String"
+            }
+          ],
+          "returnType": "Cargo",
+          "accessRight": "public"
+        },
+        {
+          "name": "findByCustomerID",
+          "params": [
+            {
+              "name": "customerID",
+              "type": "String"
+            }
+          ],
+          "returnType": "Cargo",
+          "accessRight": "public"
+        },
+        {
+          "name": "updateCargo",
+          "params": [
+            {
+              "name": "cargo",
+              "type": "Cargo"
+            }
+          ],
+          "returnType": "boolean",
+          "accessRight": "public"
+        },
+        {
+          "name": "addCargoBookRecord",
+          "params": [
+            {
+              "name": "cargo",
+              "type": "Cargo"
+            }
+          ],
+          "returnType": "boolean",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "Role",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "String",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "Customer",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "customerID",
+          "type": "int",
+          "accessRight": "private"
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "CustomerRepository",
+      "type": "Control",
+      "attributes": [],
+      "methods": [
+        {
+          "name": "findByCustomerID",
+          "params": [
+            {
+              "name": "customerID",
+              "type": "String"
+            }
+          ],
+          "returnType": "Customer",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "CustomerAgreement",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "priceModel",
+          "type": "PriceModel",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "HandlingEventRepository",
+      "type": "Control",
+      "attributes": [],
+      "methods": [
+        {
+          "name": "findByCargoIdTimeType",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "String"
+            },
+            {
+              "name": "date",
+              "type": "Date"
+            },
+            {
+              "name": "type",
+              "type": "string"
+            }
+          ],
+          "returnType": "HandlingEvent",
+          "accessRight": "public"
+        },
+        {
+          "name": "findByCargoTrackingID",
+          "params": [
+            {
+              "name": "trackingID",
+              "type": "String"
+            }
+          ],
+          "returnType": "HandlingEvent",
+          "accessRight": "public"
+        },
+        {
+          "name": "addHandlingRecord",
+          "params": [
+            {
+              "name": "handlingEventList",
+              "type": "HandlingEvent"
+            },
+            {
+              "name": "cargoID",
+              "type": "String"
+            }
+          ],
+          "returnType": "HandlingEvent",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "HandlingEvent",
+      "type": "Control",
+      "attributes": [
+        {
+          "name": "completeTime",
+          "type": "Date",
+          "accessRight": "private"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "customerHandle",
+          "params": [],
+          "returnType": "boolean",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "DeliverySpecification",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "arrivalTime",
+          "type": "Date",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getInfo",
+          "params": [],
+          "returnType": "DeliverySpecification",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "CarrierMovement",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "scheduleID",
+          "type": "int",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "carry",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            },
+            {
+              "name": "from",
+              "type": "Location"
+            },
+            {
+              "name": "to",
+              "type": "Location"
+            }
+          ],
+          "returnType": "boolean",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "Location",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "portCode",
+          "type": "int",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "Invoice",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "invoiceID",
+          "type": "int",
+          "accessRight": "private"
+        },
+        {
+          "name": "date",
+          "type": "Date",
+          "accessRight": "private"
+        }
+      ],
+      "methods": [
+        {
+          "name": "generateInvoice",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            },
+            {
+              "name": "money",
+              "type": "Money"
+            },
+            {
+              "name": "customerID",
+              "type": "Customer"
+            }
+          ],
+          "returnType": "Invoice",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "Money",
+      "type": "Entity",
+      "attributes": [
+        {
+          "name": "account",
+          "type": "int",
+          "accessRight": "private"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "PriceModel",
+      "type": "Entity",
+      "attributes": [],
+      "methods": [
+        {
+          "name": "computePrice",
+          "params": [
+            {
+              "name": "priceModel",
+              "type": "int"
+            }
+          ],
+          "returnType": "Price",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "AllocationChecker",
+      "type": "Entity",
+      "attributes": [],
+      "methods": [
+        {
+          "name": "checkByCargoId",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            }
+          ],
+          "returnType": "boolean",
+          "accessRight": "public"
+        }
+      ]
+    },
+    {
+      "name": "BookCargo",
+      "type": "Control",
+      "attributes": [],
+      "methods": [
+        {
+          "name": "bookCargo",
+          "params": [
+            {
+              "name": "cargoID",
+              "type": "int"
+            },
+            {
+              "name": "num",
+              "type": "int"
+            }
+          ],
+          "returnType": "Cargo",
+          "accessRight": "public"
+        }
+      ]
+    }
+  ],
+  "classRelationList": [
+    {
+      "origin":"Customer",
+      "destination":"Role",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"Customer",
+      "destination":"CustomerAgreement",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"CustomerRepository",
+      "destination":"Customer",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"Cargo",
+      "destination":"Role",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"HandlingEvent",
+      "destination":"Cargo",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"HandlingEventRepository",
+      "destination":"HandlingEvent",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"Cargo",
+      "destination":"DeliverySpecification",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"DeliverySpecification",
+      "destination":"Location",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"HandlingEvent",
+      "destination":"CarrierMovement",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"CarrierMovement",
+      "destination":"Location",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"Invoice",
+      "destination":"Customer",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"Invoice",
+      "destination":"Money",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"PriceModel",
+      "destination":"Money",
+      "type":"ClassAssociation"
+    },
+    {
+      "origin":"AllocationChecker",
+      "destination":"CargoRepository",
+      "type":"ClassDependency"
+    },
+    {
+      "origin":"BookCargo",
+      "destination":"CargoRepository",
+      "type":"ClassDependency"
+    },
+    {
+      "origin":"BookCargo",
+      "destination":"AllocationChecker",
+      "type":"ClassDependency"
+    }
+  ]
+}

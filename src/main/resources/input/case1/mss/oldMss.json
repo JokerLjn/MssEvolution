@@ -1,0 +1,307 @@
+{
+  "name": "DDDCargo Microservice System",
+  "microservices": [
+    {
+      "name": "CargoService",
+      "classList": [
+        {
+          "name": "Cargo",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "trackingID",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "type": "int",
+              "name": "status",
+              "accessRight": "private"
+            }
+          ],
+          "methods": [
+            {
+              "name": "finish",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ]
+        },
+        {
+          "name": "DeliveryHistory",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "cargoID",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "name": "handlingEvents",
+              "type": "List<HandlingEvent>",
+              "accessRight": "private"
+            }
+          ],
+          "methods": [
+            {
+              "name": "searchHistory",
+              "params": [
+                {
+                  "name": "cargoID",
+                  "type": "int"
+                }
+              ],
+              "returnType": "DeliveryHistory",
+              "accessRight": "public"
+            },
+            {
+              "name": "addHistory",
+              "params": [
+                {
+                  "name": "cargoID",
+                  "type": "int"
+                },
+                {
+                  "name": "handlingEvent",
+                  "type": "HandlingEvent"
+                }
+              ],
+              "returnType": "DeliveryHistory",
+              "accessRight": "public"
+            }
+          ]
+        },
+        {
+          "name": "DeliverySpecification",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "arrivalTime",
+              "type": "Date",
+              "accessRight": "private"
+            }
+          ],
+          "methods": [
+            {
+              "name": "getInfo",
+              "params": [],
+              "returnType": "DeliverySpecification",
+              "accessRight": "public"
+            }
+          ]
+        }
+      ],
+      "classRelationList": [
+        {
+          "origin":"DeliveryHistory",
+          "destination":"Cargo",
+          "type":"ClassAssociation"
+        },
+        {
+          "origin":"DeliverySpecification",
+          "destination":"Cargo",
+          "type":"ClassAssociation"
+        }
+      ],
+      "interfaceList": [
+        {
+          "url": "/cargo/getInfo",
+          "type": "GET",
+          "className": "Cargo",
+          "methodName": "getInfo",
+          "msNameList": []
+        },
+        {
+          "url": "/history/search",
+          "type": "POST",
+          "className": "DeliveryHistory",
+          "methodName": "searchHistory",
+          "msNameList": []
+        },
+        {
+          "url": "/history/add",
+          "type": "POST",
+          "className": "DeliveryHistory",
+          "methodName": "addHistory",
+          "msNameList": [
+            "TransportService"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CustomerService",
+      "classList": [
+        {
+          "name": "Role",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "name",
+              "type": "String",
+              "accessRight": "private"
+            }
+          ],
+          "methods": []
+        },
+        {
+          "name": "Customer",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "customerID",
+              "type": "int",
+              "accessRight": "private"
+            },
+            {
+              "name": "name",
+              "type": "String",
+              "accessRight": "private"
+            }
+          ],
+          "methods": [
+            {
+              "name": "getInfo",
+              "params": [],
+              "returnType": "Customer",
+              "accessRight": "public"
+            }
+          ]
+        }
+      ],
+      "classRelationList": [
+        {
+          "origin":"Customer",
+          "destination":"Role",
+          "type":"ClassAssociation"
+        }
+      ],
+      "interfaceList": [
+        {
+          "url": "/customer/getInfo",
+          "type": "GET",
+          "className": "Customer",
+          "methodName": "getInfo",
+          "msNameList": [
+            "TransportService"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TransportService",
+      "classList": [
+        {
+          "name": "HandlingEvent",
+          "type": "Control",
+          "attributes": [
+            {
+              "name": "completeTime",
+              "type": "Date",
+              "accessRight": "private"
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "accessRight": "private"
+            }
+          ],
+          "methods": [
+            {
+              "name": "customerHandle",
+              "params": [],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ]
+        },
+        {
+          "name": "CarrierMovement",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "scheduleID",
+              "type": "int",
+              "accessRight": "private"
+            }
+          ],
+          "methods": [
+            {
+              "name": "carry",
+              "params": [
+                {
+                  "name": "cargoID",
+                  "type": "int"
+                },
+                {
+                  "name": "from",
+                  "type": "Location"
+                },
+                {
+                  "name": "to",
+                  "type": "Location"
+                }
+              ],
+              "returnType": "boolean",
+              "accessRight": "public"
+            }
+          ]
+        }
+      ],
+      "classRelationList": [
+        {
+          "origin":"HandlingEvent",
+          "destination":"CarrierMovement",
+          "type":"ClassAssociation"
+        }
+      ],
+      "interfaceList": [
+        {
+          "url": "/transport/handle",
+          "type": "POST",
+          "className": "HandlingEvent",
+          "methodName": "handle",
+          "msNameList": []
+        },
+        {
+          "url": "/transport/carry",
+          "type": "POST",
+          "className": "CarrierMovement",
+          "methodName": "carry",
+          "msNameList": []
+        }
+      ]
+    },
+    {
+      "name": "LocationService",
+      "classList": [
+        {
+          "name": "Location",
+          "type": "Entity",
+          "attributes": [
+            {
+              "name": "portCode",
+              "type": "int",
+              "accessRight": "private"
+            }
+          ],
+          "methods": []
+        }
+      ],
+      "classRelationList": [],
+      "interfaceList": [
+        {
+          "url": "/location/getByName",
+          "type": "POST",
+          "className": "Location",
+          "methodName": "getLocation",
+          "msNameList": [
+            "CargoService",
+            "TransportService"
+          ]
+        }
+      ]
+    }
+  ]
+}

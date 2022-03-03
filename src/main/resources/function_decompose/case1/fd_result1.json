@@ -1,0 +1,32 @@
+[
+  {
+    "name": "CustomerService",
+    "classSet": [
+      "Customer",
+      "CustomerRepository",
+      "Role"
+    ]
+  },
+  {
+    "name": "CargoService",
+    "classSet": [
+      "Cargo",
+      "DeliveryHistory",
+      "HandlingEvent"
+    ]
+  },
+  {
+    "name": "DeliveryService",
+    "classSet": [
+      "CarrierMovement",
+      "Location",
+      "DeliverySpecification"
+    ]
+  },
+  {
+    "name": "CargoRepositoryService",
+    "classSet": [
+      "CargoRepository"
+    ]
+  }
+]

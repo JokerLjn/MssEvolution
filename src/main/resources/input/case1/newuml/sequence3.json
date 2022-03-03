@@ -1,0 +1,54 @@
+{
+  "name": "cargo bill sequence",
+  "objects": [
+    "Customer",
+    "CustomerRepository",
+    "PriceModel",
+    "Money",
+    "Invoice"
+  ],
+  "methodCalls": [
+    {
+      "num": 1,
+      "type": "SIMPLE",
+      "from": "Customer",
+      "to": "CustomerAgreement",
+      "method": "getAgreementInfo"
+    },
+    {
+      "num": 2,
+      "type": "REPLY",
+      "from": "CustomerAgreement",
+      "to": "Customer",
+      "method": "getAgreementInfo"
+    },
+    {
+      "num": 3,
+      "type": "SIMPLE",
+      "from": "Customer",
+      "to": "PriceModel",
+      "method": "computePrice"
+    },
+    {
+      "num": 4,
+      "type": "SIMPLE",
+      "from": "PriceModel",
+      "to": "Money",
+      "method": "addRecord"
+    },
+    {
+      "num": 5,
+      "type": "SIMPLE",
+      "from": "Money",
+      "to": "Invoice",
+      "method": "generateInvoice"
+    },
+    {
+      "num": 6,
+      "type": "REPLY",
+      "from": "Invoice",
+      "to": "Customer",
+      "method": "getAgreementInfo"
+    }
+  ]
+}

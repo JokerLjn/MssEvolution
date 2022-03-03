@@ -1,0 +1,506 @@
+[
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "className": "Order",
+    "classType": "Entity"
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "ID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "customerID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightId",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightInfo",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "status",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "addBookingOrder",
+      "params": [
+        {
+          "name": "customerID",
+          "type": "String"
+        },
+        {
+          "name": "flightId",
+          "type": "String"
+        },
+        {
+          "name": "flightInfo",
+          "type": "String"
+        }
+      ],
+      "returnType": "Order"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "payOrder",
+      "params": [
+        {
+          "name": "orderID",
+          "type": "String"
+        },
+        {
+          "name": "money",
+          "type": "double"
+        }
+      ],
+      "returnType": "boolean"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "finishOrder",
+      "params": [
+        {
+          "name": "orderID",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "returnType": "boolean"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "BookingService"
+      },
+      "destination": {
+        "name": "Order"
+      },
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "className": "Order"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 72,
+      "type": "SIMPLE",
+      "from": "BookingService",
+      "to": "Order",
+      "method": "addBookingOrder"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "className": "AuthService"
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "className": "AuthServiceImpl"
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "className": "LoginREST",
+    "attribute": {
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "className": "AcmeAirConfiguration",
+    "attribute": {
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "DELETE",
+    "className": "RESTCookieSessionFilter",
+    "attribute": {
+      "name": "authService",
+      "type": "AuthService",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "className": "AuthService"
+  },
+  {
+    "obj": "OBJECT",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "className": "AuthServiceImpl"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 48,
+      "type": "SIMPLE",
+      "from":"LoginREST",
+      "to":"AuthService",
+      "method": "createSession"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 49,
+      "type": "SIMPLE",
+      "from":"AuthService",
+      "to":"KeyGenerator",
+      "method": "generate"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 50,
+      "type": "REPLY",
+      "from":"KeyGenerator",
+      "to":"AuthService",
+      "method": ""
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 51,
+      "type": "REPLY",
+      "from":"AuthService",
+      "to":"AuthService",
+      "method": "createSession"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 52,
+      "type": "SIMPLE",
+      "from":"AuthService",
+      "to":"AuthServiceImpl",
+      "method": "createSession"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "DELETE",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 53,
+      "type": "REPLY",
+      "from":"AuthServiceImpl",
+      "to":"AuthService",
+      "method": ""
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "classType": "Entity"
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "attribute": {
+      "name": "flightID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "attribute": {
+      "name": "from",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "attribute": {
+      "name": "to",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "attribute": {
+      "name": "passengerNum",
+      "type": "Integer",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "attribute": {
+      "name": "price",
+      "type": "Double",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "attribute": {
+      "name": "period",
+      "type": "Double",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "FlightInfo",
+    "method": {
+      "name": "getFlightInfo",
+      "params": [
+        {
+          "name": "flightID",
+          "type": "String"
+        }
+      ],
+      "returnType": "FlightInfo"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "BookingService"
+      },
+      "destination": {
+        "name": "FlightInfo"
+      },
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "FlightService"
+      },
+      "destination": {
+        "name": "FlightInfo"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "FlightServiceImpl"
+      },
+      "destination": {
+        "name": "FlightInfo"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "Order"
+      },
+      "destination": {
+        "name": "FlightInfo"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "UPDATE",
+    "className": "FlightService",
+    "method": {
+      "name": "getFlight",
+      "params": [],
+      "returnType": "FlightInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "UPDATE",
+    "className": "FlightService",
+    "method": {
+      "name": "getFlightByFlightId",
+      "params": [
+        {
+          "name": "flightID",
+          "type": "String"
+        }
+      ],
+      "returnType": "FlightInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "UPDATE",
+    "className": "FlightServiceImpl",
+    "method": {
+      "name": "getFlight",
+      "params": [],
+      "returnType": "FlightInfo"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightInfo",
+      "type": "FlightInfo",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "className": "FlightInfo"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 73,
+      "type": "SIMPLE",
+      "from":"Order",
+      "to":"FlightInfo",
+      "method": "getFlightInfo"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 74,
+      "type": "REPLY",
+      "from":"FlightInfo",
+      "to":"Order",
+      "method": ""
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 75,
+      "type": "SIMPLE",
+      "from":"FlightServiceImpl",
+      "to":"FlightInfo",
+      "method": "getFlightInfo"
+    }
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 76,
+      "type": "REPLY",
+      "from":"FlightInfo",
+      "to":"FlightServiceImpl",
+      "method": ""
+    }
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "name": "cargo booking sequence",
+  "objects": [
+    "BookingCargo",
+    "AllocationChecker",
+    "Cargo",
+    "CargoRepository",
+    "DeliverySpecification"
+  ],
+  "methodCalls": [
+    {
+      "num": 1,
+      "type": "SIMPLE",
+      "from": "Start",
+      "to": "BookingCargo",
+      "method": "bookCargo"
+    },
+    {
+      "num": 2,
+      "type": "SIMPLE",
+      "from": "BookingCargo",
+      "to": "AllocationChecker",
+      "method": "checkByCargoId"
+    },
+    {
+      "num": 3,
+      "type": "SIMPLE",
+      "from": "AllocationChecker",
+      "to": "Cargo",
+      "method": "getCargoId"
+    },
+    {
+      "num": 4,
+      "type": "REPLY",
+      "from": "Cargo",
+      "to": "AllocationChecker",
+      "method": "getCargoId"
+    },
+    {
+      "num": 5,
+      "type": "SIMPLE",
+      "from": "AllocationChecker",
+      "to": "CargoRepository",
+      "method": "findByCargoId"
+    },
+    {
+      "num": 6,
+      "type": "REPLY",
+      "from": "CargoRepository",
+      "to": "AllocationChecker",
+      "method": "findByCargoId"
+    },
+    {
+      "num": 7,
+      "type": "REPLY",
+      "from": "AllocationChecker",
+      "to": "BookingCargo",
+      "method": "checkByCargoId"
+    },
+    {
+      "num": 8,
+      "type": "SIMPLE",
+      "from": "BookCargo",
+      "to": "CargoRepository",
+      "method": "addCargoBookRecord"
+    },
+    {
+      "num": 9,
+      "type": "SIMPLE",
+      "from": "CargoRepository",
+      "to": "DeliverySpecification",
+      "method": "setSpecification"
+    },
+    {
+      "num": 10,
+      "type": "REPLY",
+      "from": "CargoRepository",
+      "to": "BookingCargo",
+      "method": "addCargoBookRecord"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+微服务系统：
+name = AcmeAir
+microservices = [
+微服务CustomerService
+	 classList = [CustomerService, CustomerREST, RESTCookieSessionFilter, CustomerServiceImpl, CustomerInfo, AcmeAirConfiguration, AddressInfo]
+	 classRelationList = [ClassRelation(origin=AcmeAirConfiguration, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=RESTCookieSessionFilter, type=ClassDependency), ClassRelation(origin=CustomerREST, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerService, type=ClassInheritance), ClassRelation(origin=CustomerServiceImpl, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassAssociation), ClassRelation(origin=AcmeAirConfiguration, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerService, destination=CustomerInfo, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务FlightService
+	 classList = [FlightServiceImpl, FlightsREST, FlightService, AcmeAirApp, DateParam]
+	 classRelationList = [ClassRelation(origin=FlightsREST, destination=FlightService, type=ClassAssociation), ClassRelation(origin=AcmeAirApp, destination=FlightsREST, type=ClassDependency), ClassRelation(origin=FlightsREST, destination=DateParam, type=ClassDependency), ClassRelation(origin=FlightsREST, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=FlightService, type=ClassInheritance)]
+	 interfaceList = []
+, 
+微服务BookingService
+	 classList = [Order, BookingsREST, BookingServiceImpl, BookingService]
+	 classRelationList = [ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=BookingService, type=ClassRealization), ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务AuthService
+	 classList = [ConnectionManager, MongoConstants, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=ConnectionManager, destination=MongoConstants, type=ClassRealization)]
+	 interfaceList = []
+, 
+微服务LoaderService
+	 classList = [BookingLoader, LoaderREST, Loader, FlightLoader, SessionLoader, CustomerLoader]
+	 classRelationList = [ClassRelation(origin=Loader, destination=CustomerLoader, type=ClassAssociation), ClassRelation(origin=LoaderREST, destination=Loader, type=ClassAssociation), ClassRelation(origin=Loader, destination=SessionLoader, type=ClassAssociation), ClassRelation(origin=Loader, destination=FlightLoader, type=ClassAssociation), ClassRelation(origin=LoaderREST, destination=Loader, type=ClassDependency), ClassRelation(origin=Loader, destination=BookingLoader, type=ClassAssociation)]
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 0.6150735294117646, cohesionDegree = 1.2301470588235293, coupingDegree = 2.0
+newQualityScore = 2.214047619047619, cohesionDegree = 1.2280952380952381, coupingDegree = 6.8
+decreasePercent = -2.5996470554749096
+-----------------------------------
+mssCost = 69.04000000000002

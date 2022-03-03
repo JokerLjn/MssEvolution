@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/joker/Desktop/项目/微服务系统案例代码/acmeair/acmeair-bookingservice-java-main</OriginalElement>
+  <nodes>
+    <node x="898.9375" y="610.0">com.acmeair.service.BookingService</node>
+    <node x="2026.0625" y="0.0">com.acmeair.client.MilesResponse</node>
+    <node x="0.0" y="1753.0">com.acmeair.health.BookingLivenessHealthCheck</node>
+    <node x="616.0017361111112" y="1540.0">com.acmeair.config.BookingLoaderRest</node>
+    <node x="1309.1041666666667" y="1141.0">com.acmeair.health.BookingReadinessHealthCheck</node>
+    <node x="1723.875" y="1115.0">com.acmeair.web.RewardTracker</node>
+    <node x="2072.8142361111113" y="701.0">com.acmeair.client.FlightClient</node>
+    <node x="348.0" y="1753.0">com.acmeair.web.BookingServiceApp</node>
+    <node x="1865.5642361111113" y="310.0">com.acmeair.client.LongFallbackHandler</node>
+    <node x="979.1041666666667" y="1102.0">com.acmeair.config.BookingConfiguration</node>
+    <node x="590.0017361111112" y="1128.0">com.acmeair.loader.BookingLoader</node>
+    <node x="0.0" y="168.0">com.acmeair.mongo.MongoProperties</node>
+    <node x="1328.75" y="1462.0">com.acmeair.web.BookingServiceRest</node>
+    <node x="86.60416666666674" y="596.0">com.acmeair.mongo.ConnectionManager</node>
+    <node x="1616.8142361111113" y="701.0">com.acmeair.client.CustomerClient</node>
+    <node x="174.0017361111111" y="972.0">com.acmeair.mongo.services.BookingServiceImpl</node>
+    <node x="391.60416666666674" y="701.0">com.acmeair.service.KeyGenerator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.acmeair.mongo.ConnectionManager" target="com.acmeair.mongo.MongoProperties" relationship="TO_ONE">
+      <point x="-71.25" y="-136.0" />
+      <point x="157.85416666666674" y="574.0" />
+      <point x="127.25" y="574.0" />
+      <point x="-127.25" y="187.0" />
+    </edge>
+    <edge source="com.acmeair.client.CustomerClient" target="com.acmeair.client.MilesResponse" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.0" />
+      <point x="1834.8142361111113" y="564.0" />
+      <point x="1744.8142361111113" y="564.0" />
+      <point x="1744.8142361111113" y="142.0" />
+      <point x="2125.0625" y="142.0" />
+      <point x="0.0" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.client.CustomerClient" relationship="DEPENDENCY">
+      <point x="130.75" y="-71.0" />
+      <point x="2116.125" y="950.0" />
+      <point x="2216.104166666667" y="950.0" />
+      <point x="2216.104166666667" y="890.0" />
+      <point x="1943.8142361111113" y="890.0" />
+      <point x="109.0" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.web.BookingServiceRest" target="com.acmeair.web.RewardTracker" relationship="DEPENDENCY">
+      <point x="126.0" y="-123.0" />
+      <point x="1706.75" y="1441.0" />
+      <point x="1914.75" y="1441.0" />
+      <point x="1914.75" y="1421.0" />
+      <point x="2116.125" y="1421.0" />
+      <point x="130.75" y="71.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.service.BookingService" relationship="TO_ONE">
+      <point x="-130.75" y="-71.0" />
+      <point x="1854.625" y="950.0" />
+      <point x="1777.8541666666667" y="950.0" />
+      <point x="1777.8541666666667" y="920.0" />
+      <point x="1063.9375" y="920.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.client.MilesResponse" relationship="DEPENDENCY">
+      <point x="130.75" y="-71.0" />
+      <point x="2116.125" y="950.0" />
+      <point x="2216.104166666667" y="950.0" />
+      <point x="2216.104166666667" y="890.0" />
+      <point x="2411.8142361111113" y="890.0" />
+      <point x="2411.8142361111113" y="142.0" />
+      <point x="2125.0625" y="142.0" />
+      <point x="0.0" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.client.FlightClient" relationship="TO_ONE">
+      <point x="-130.75" y="-71.0" />
+      <point x="1854.625" y="950.0" />
+      <point x="1777.8541666666667" y="950.0" />
+      <point x="1777.8541666666667" y="900.0" />
+      <point x="2154.0642361111113" y="900.0" />
+      <point x="-81.25" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.client.CustomerClient" target="com.acmeair.client.LongFallbackHandler" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.0" />
+      <point x="1834.8142361111113" y="574.0" />
+      <point x="2035.0642361111113" y="574.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.acmeair.loader.BookingLoader" target="com.acmeair.service.BookingService" relationship="TO_ONE">
+      <point x="-68.75" y="-58.0" />
+      <point x="658.7517361111112" y="950.0" />
+      <point x="1063.9375" y="950.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.BookingServiceImpl" target="com.acmeair.service.BookingService" relationship="TO_ONE">
+      <point x="0.0" y="-214.0" />
+      <point x="372.0017361111111" y="950.0" />
+      <point x="447.35416666666674" y="950.0" />
+      <point x="447.35416666666674" y="930.0" />
+      <point x="1063.9375" y="930.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.client.CustomerClient" relationship="TO_ONE">
+      <point x="-130.75" y="-71.0" />
+      <point x="1854.625" y="950.0" />
+      <point x="1777.8541666666667" y="950.0" />
+      <point x="1777.8541666666667" y="900.0" />
+      <point x="1725.8142361111113" y="900.0" />
+      <point x="-109.0" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.web.BookingServiceRest" target="com.acmeair.service.BookingService" relationship="TO_ONE">
+      <point x="-126.0" y="-123.0" />
+      <point x="1454.75" y="1441.0" />
+      <point x="1252.5017361111113" y="1441.0" />
+      <point x="1252.5017361111113" y="1431.0" />
+      <point x="968.6041666666667" y="1431.0" />
+      <point x="968.6041666666667" y="950.0" />
+      <point x="1063.9375" y="950.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.config.BookingConfiguration" target="com.acmeair.service.BookingService" relationship="TO_ONE">
+      <point x="-77.5" y="-84.0" />
+      <point x="1056.6041666666667" y="950.0" />
+      <point x="1063.9375" y="950.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.config.BookingLoaderRest" target="com.acmeair.loader.BookingLoader" relationship="TO_ONE">
+      <point x="-55.75" y="-45.0" />
+      <point x="671.7517361111112" y="1441.0" />
+      <point x="658.7517361111112" y="1441.0" />
+      <point x="-68.75" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.BookingServiceImpl" target="com.acmeair.service.BookingService" relationship="REALIZATION">
+      <point x="132.0" y="-214.0" />
+      <point x="504.0017361111111" y="920.0" />
+      <point x="953.9375" y="920.0" />
+      <point x="-110.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.client.FlightClient" target="com.acmeair.client.LongFallbackHandler" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.0" />
+      <point x="2235.3142361111113" y="564.0" />
+      <point x="2035.0642361111113" y="564.0" />
+      <point x="0.0" y="45.0" />
+    </edge>
+    <edge source="com.acmeair.config.BookingConfiguration" target="com.acmeair.service.BookingService" relationship="DEPENDENCY">
+      <point x="77.5" y="-84.0" />
+      <point x="1211.6041666666667" y="940.0" />
+      <point x="1444.0642361111113" y="940.0" />
+      <point x="1444.0642361111113" y="900.0" />
+      <point x="1173.9375" y="900.0" />
+      <point x="110.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.client.LongFallbackHandler" target="com.acmeair.client.MilesResponse" relationship="DEPENDENCY">
+      <point x="0.0" y="-45.0" />
+      <point x="2035.0642361111113" y="142.0" />
+      <point x="2125.0625" y="142.0" />
+      <point x="0.0" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.ConnectionManager" target="com.acmeair.mongo.MongoProperties" relationship="DEPENDENCY">
+      <point x="71.25" y="-136.0" />
+      <point x="300.35416666666674" y="574.0" />
+      <point x="381.75" y="574.0" />
+      <point x="127.25" y="187.0" />
+    </edge>
+    <edge source="com.acmeair.web.BookingServiceRest" target="com.acmeair.service.BookingService" relationship="DEPENDENCY">
+      <point x="126.0" y="-123.0" />
+      <point x="1706.75" y="1441.0" />
+      <point x="1914.75" y="1441.0" />
+      <point x="1914.75" y="1421.0" />
+      <point x="1636.6041666666667" y="1421.0" />
+      <point x="1636.6041666666667" y="940.0" />
+      <point x="1444.0642361111113" y="940.0" />
+      <point x="1444.0642361111113" y="900.0" />
+      <point x="1173.9375" y="900.0" />
+      <point x="110.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.config.BookingLoaderRest" target="com.acmeair.loader.BookingLoader" relationship="DEPENDENCY">
+      <point x="55.75" y="-45.0" />
+      <point x="783.2517361111112" y="1441.0" />
+      <point x="796.2517361111112" y="1441.0" />
+      <point x="68.75" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.BookingServiceImpl" target="com.acmeair.mongo.ConnectionManager" relationship="TO_ONE">
+      <point x="0.0" y="-214.0" />
+      <point x="372.0017361111111" y="950.0" />
+      <point x="447.35416666666674" y="950.0" />
+      <point x="447.35416666666674" y="910.0" />
+      <point x="300.35416666666674" y="910.0" />
+      <point x="71.25" y="136.0" />
+    </edge>
+    <edge source="com.acmeair.health.BookingReadinessHealthCheck" target="com.acmeair.service.BookingService" relationship="TO_ONE">
+      <point x="-79.25" y="-45.0" />
+      <point x="1388.3541666666667" y="950.0" />
+      <point x="1063.9375" y="950.0" />
+      <point x="0.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.loader.BookingLoader" target="com.acmeair.service.BookingService" relationship="DEPENDENCY">
+      <point x="68.75" y="-58.0" />
+      <point x="796.2517361111112" y="940.0" />
+      <point x="1444.0642361111113" y="940.0" />
+      <point x="1444.0642361111113" y="900.0" />
+      <point x="1173.9375" y="900.0" />
+      <point x="110.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.client.FlightClient" relationship="DEPENDENCY">
+      <point x="130.75" y="-71.0" />
+      <point x="2116.125" y="950.0" />
+      <point x="2216.104166666667" y="950.0" />
+      <point x="2216.104166666667" y="890.0" />
+      <point x="2316.5642361111113" y="890.0" />
+      <point x="81.25" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.BookingServiceImpl" target="com.acmeair.mongo.ConnectionManager" relationship="DEPENDENCY">
+      <point x="-132.0" y="-214.0" />
+      <point x="240.0017361111111" y="950.0" />
+      <point x="158.1892361111111" y="950.0" />
+      <point x="-71.25" y="136.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.BookingServiceImpl" target="com.acmeair.service.KeyGenerator" relationship="DEPENDENCY">
+      <point x="-132.0" y="-214.0" />
+      <point x="240.0017361111111" y="950.0" />
+      <point x="158.1892361111111" y="950.0" />
+      <point x="158.1892361111111" y="940.0" />
+      <point x="437.35416666666674" y="940.0" />
+      <point x="-45.75" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.health.BookingReadinessHealthCheck" target="com.acmeair.service.BookingService" relationship="DEPENDENCY">
+      <point x="79.25" y="-45.0" />
+      <point x="1546.8541666666667" y="940.0" />
+      <point x="1444.0642361111113" y="940.0" />
+      <point x="1444.0642361111113" y="900.0" />
+      <point x="1173.9375" y="900.0" />
+      <point x="110.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.web.RewardTracker" target="com.acmeair.service.BookingService" relationship="DEPENDENCY">
+      <point x="130.75" y="-71.0" />
+      <point x="2116.125" y="950.0" />
+      <point x="2216.104166666667" y="950.0" />
+      <point x="2216.104166666667" y="910.0" />
+      <point x="1444.0642361111113" y="910.0" />
+      <point x="1444.0642361111113" y="900.0" />
+      <point x="1173.9375" y="900.0" />
+      <point x="110.0" y="122.0" />
+    </edge>
+    <edge source="com.acmeair.client.FlightClient" target="com.acmeair.client.MilesResponse" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.0" />
+      <point x="2235.3142361111113" y="574.0" />
+      <point x="2325.3142361111113" y="574.0" />
+      <point x="2325.3142361111113" y="142.0" />
+      <point x="2125.0625" y="142.0" />
+      <point x="0.0" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.BookingServiceImpl" target="com.acmeair.service.KeyGenerator" relationship="TO_ONE">
+      <point x="0.0" y="-214.0" />
+      <point x="372.0017361111111" y="950.0" />
+      <point x="447.35416666666674" y="950.0" />
+      <point x="447.35416666666674" y="910.0" />
+      <point x="528.8541666666667" y="910.0" />
+      <point x="45.75" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.web.BookingServiceRest" target="com.acmeair.web.RewardTracker" relationship="TO_ONE">
+      <point x="-126.0" y="-123.0" />
+      <point x="1454.75" y="1441.0" />
+      <point x="1252.5017361111113" y="1441.0" />
+      <point x="1252.5017361111113" y="1431.0" />
+      <point x="1854.625" y="1431.0" />
+      <point x="-130.75" y="71.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.33472584856396864" showDependencies="true" x="1206.0" y="947.5000000000001" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

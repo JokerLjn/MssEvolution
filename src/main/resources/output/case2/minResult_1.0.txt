@@ -1,0 +1,106 @@
+uml 原子变化到 mss 原子变化的映射：
+ClassChange{optType=ADD, optObj=CLASS, className='Order', classType=Entity} 
+MssAtomicChange{type=ADD, obj=CLASS, msName='acmeair-bookingservice',
+        valueMap={className=Order}
+--------------
+AttributeChange{optType=ADD, optObj=ATTRIBUTE, className='Order', attribute=UmlAttribute(name=ID, type=String, accessRight=private)} 
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=ID, type=String, accessRight=private)}
+--------------
+AttributeChange{optType=ADD, optObj=ATTRIBUTE, className='Order', attribute=UmlAttribute(name=customerID, type=String, accessRight=private)} 
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=customerID, type=String, accessRight=private)}
+--------------
+AttributeChange{optType=ADD, optObj=ATTRIBUTE, className='Order', attribute=UmlAttribute(name=flightId, type=String, accessRight=private)} 
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=flightId, type=String, accessRight=private)}
+--------------
+AttributeChange{optType=ADD, optObj=ATTRIBUTE, className='Order', attribute=UmlAttribute(name=flightInfo, type=String, accessRight=private)} 
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=flightInfo, type=String, accessRight=private)}
+--------------
+AttributeChange{optType=ADD, optObj=ATTRIBUTE, className='Order', attribute=UmlAttribute(name=status, type=String, accessRight=private)} 
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=status, type=String, accessRight=private)}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='Order', method=UmlMethod(name=addBookingOrder, params=[UmlAttribute(name=customerID, type=String, accessRight=null), UmlAttribute(name=flightId, type=String, accessRight=null), UmlAttribute(name=flightInfo, type=String, accessRight=null)], returnType=Order, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='acmeair-bookingservice',
+        valueMap={method=UmlMethod(name=addBookingOrder, params=[UmlAttribute(name=customerID, type=String, accessRight=null), UmlAttribute(name=flightId, type=String, accessRight=null), UmlAttribute(name=flightInfo, type=String, accessRight=null)], returnType=Order, accessRight=null)}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='Order', method=UmlMethod(name=payOrder, params=[UmlAttribute(name=orderID, type=String, accessRight=null), UmlAttribute(name=money, type=double, accessRight=null)], returnType=boolean, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='acmeair-bookingservice',
+        valueMap={method=UmlMethod(name=payOrder, params=[UmlAttribute(name=orderID, type=String, accessRight=null), UmlAttribute(name=money, type=double, accessRight=null)], returnType=boolean, accessRight=null)}
+--------------
+MethodChange{optType=ADD, optObj=METHOD, className='Order', method=UmlMethod(name=finishOrder, params=[UmlAttribute(name=orderID, type=String, accessRight=null), UmlAttribute(name=status, type=String, accessRight=null)], returnType=boolean, accessRight=null)} 
+MssAtomicChange{type=ADD, obj=METHOD, msName='acmeair-bookingservice',
+        valueMap={method=UmlMethod(name=finishOrder, params=[UmlAttribute(name=orderID, type=String, accessRight=null), UmlAttribute(name=status, type=String, accessRight=null)], returnType=boolean, accessRight=null)}
+--------------
+RelationShipChange{optType=ADD, optObj=RELATION, relation=ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)}
+MssAtomicChange{type=ADD, obj=RELATION, msName='acmeair-bookingservice',
+        valueMap={relation=ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)}
+--------------
+MessageChange{optType=ADD, optObj=MESSAGE, sequenceName='AcmeAir sequence', methodCall=MethodCall(num=72, type=SIMPLE, from=BookingService, to=Order, method=addBookingOrder)} 
+--------------
+----------------------------------------
+
+演化方案为：
+MssAtomicChange{type=ADD, obj=CLASS, msName='acmeair-bookingservice',
+        valueMap={className=Order}
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=ID, type=String, accessRight=private)}
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=customerID, type=String, accessRight=private)}
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=flightId, type=String, accessRight=private)}
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=flightInfo, type=String, accessRight=private)}
+MssAtomicChange{type=ADD, obj=ATTRIBUTE, msName='acmeair-bookingservice',
+        valueMap={attribute=UmlAttribute(name=status, type=String, accessRight=private)}
+MssAtomicChange{type=ADD, obj=METHOD, msName='acmeair-bookingservice',
+        valueMap={method=UmlMethod(name=addBookingOrder, params=[UmlAttribute(name=customerID, type=String, accessRight=null), UmlAttribute(name=flightId, type=String, accessRight=null), UmlAttribute(name=flightInfo, type=String, accessRight=null)], returnType=Order, accessRight=null)}
+MssAtomicChange{type=ADD, obj=METHOD, msName='acmeair-bookingservice',
+        valueMap={method=UmlMethod(name=payOrder, params=[UmlAttribute(name=orderID, type=String, accessRight=null), UmlAttribute(name=money, type=double, accessRight=null)], returnType=boolean, accessRight=null)}
+MssAtomicChange{type=ADD, obj=METHOD, msName='acmeair-bookingservice',
+        valueMap={method=UmlMethod(name=finishOrder, params=[UmlAttribute(name=orderID, type=String, accessRight=null), UmlAttribute(name=status, type=String, accessRight=null)], returnType=boolean, accessRight=null)}
+MssAtomicChange{type=ADD, obj=RELATION, msName='acmeair-bookingservice',
+        valueMap={relation=ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)}
+-----------------------------------------------------
+
+微服务系统：
+name = Acmeair Mss
+microservices = [
+微服务acmeair-authservice
+	 classList = [AuthServiceApp, AuthHealthCheck, CustomerClient, AuthService, AuthServiceImpl, LoginResponse, LoginFallbackHandler, SessionConfiguration, LoginREST]
+	 classRelationList = [ClassRelation(origin=CustomerClient, destination=LoginResponse, type=ClassDependency), ClassRelation(origin=CustomerClient, destination=LoginFallbackHandler, type=ClassDependency), ClassRelation(origin=LoginREST, destination=CustomerClient, type=ClassDependency), ClassRelation(origin=LoginREST, destination=AuthService, type=ClassAssociation), ClassRelation(origin=LoginREST, destination=LoginResponse, type=ClassDependency), ClassRelation(origin=LoginREST, destination=AuthService, type=ClassDependency), ClassRelation(origin=LoginREST, destination=CustomerClient, type=ClassAssociation), ClassRelation(origin=AuthServiceImpl, destination=AuthService, type=ClassInheritance)]
+	 interfaceList = [MsInterface(url=/authService/getJwk, type=GET, className=SecurityUtils, methodName=getJwk, msNameList=[acmeair-mainservice]), MsInterface(url=/authService/login, type=POST, className=AuthServiceRest, methodName=login, msNameList=[acmeair-mainservice])]
+, 
+微服务acmeair-flightservice
+	 classList = [FlightServiceRest, FlightLoader, MilesResponse, FlightService, AirportCodeMapping, FlightServiceImpl, MongoProperties, FlightReadinessHealthCheck, ConnectionManager, FlightConfiguration, DateParam, FlightServiceApp, FlightLoaderRest, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=ConnectionManager, destination=MongoProperties, type=ClassAssociation), ClassRelation(origin=FlightServiceImpl, destination=ConnectionManager, type=ClassAssociation), ClassRelation(origin=FlightLoaderRest, destination=FlightLoader, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=FlightService, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightConfiguration, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightServiceRest, destination=DateParam, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightServiceRest, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=FlightReadinessHealthCheck, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightConfiguration, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightReadinessHealthCheck, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=FlightServiceRest, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=FlightService, type=ClassInheritance), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=FlightLoaderRest, destination=FlightLoader, type=ClassAssociation), ClassRelation(origin=ConnectionManager, destination=MongoProperties, type=ClassDependency)]
+	 interfaceList = [MsInterface(url=/flight/getRewardmiles, type=POST, className=flightService, methodName=getRewardMiles, msNameList=[acmeair-bookingservice]), MsInterface(url=/flight/queryFlights, type=POST, className=flightService, methodName=getFlightByAirportsAndDepartureDate, msNameList=[acmeair-mainservice])]
+, 
+微服务acmeair-bookingservice
+	 classList = [BookingService, MilesResponse, BookingLoaderRest, BookingReadinessHealthCheck, RewardTracker, FlightClient, BookingServiceApp, LongFallbackHandler, BookingConfiguration, BookingLoader, MongoProperties, BookingServiceRest, ConnectionManager, CustomerClient, BookingServiceImpl, KeyGenerator, Order]
+	 classRelationList = [ClassRelation(origin=ConnectionManager, destination=MongoProperties, type=ClassAssociation), ClassRelation(origin=CustomerClient, destination=MilesResponse, type=ClassDependency), ClassRelation(origin=RewardTracker, destination=CustomerClient, type=ClassDependency), ClassRelation(origin=BookingServiceRest, destination=RewardTracker, type=ClassDependency), ClassRelation(origin=RewardTracker, destination=BookingService, type=ClassAssociation), ClassRelation(origin=RewardTracker, destination=MilesResponse, type=ClassDependency), ClassRelation(origin=RewardTracker, destination=FlightClient, type=ClassAssociation), ClassRelation(origin=CustomerClient, destination=LongFallbackHandler, type=ClassDependency), ClassRelation(origin=BookingLoader, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=BookingService, type=ClassAssociation), ClassRelation(origin=RewardTracker, destination=CustomerClient, type=ClassAssociation), ClassRelation(origin=BookingServiceRest, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingConfiguration, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingLoaderRest, destination=BookingLoader, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=BookingService, type=ClassRealization), ClassRelation(origin=FlightClient, destination=LongFallbackHandler, type=ClassDependency), ClassRelation(origin=BookingConfiguration, destination=BookingService, type=ClassDependency), ClassRelation(origin=LongFallbackHandler, destination=MilesResponse, type=ClassDependency), ClassRelation(origin=ConnectionManager, destination=MongoProperties, type=ClassDependency), ClassRelation(origin=BookingServiceRest, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingLoaderRest, destination=BookingLoader, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=ConnectionManager, type=ClassAssociation), ClassRelation(origin=BookingReadinessHealthCheck, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingLoader, destination=BookingService, type=ClassDependency), ClassRelation(origin=RewardTracker, destination=FlightClient, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=BookingReadinessHealthCheck, destination=BookingService, type=ClassDependency), ClassRelation(origin=RewardTracker, destination=BookingService, type=ClassDependency), ClassRelation(origin=FlightClient, destination=MilesResponse, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=BookingServiceRest, destination=RewardTracker, type=ClassAssociation), ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)]
+	 interfaceList = [MsInterface(url=/booking/byuser/{user}, type=GET, className=BookService, methodName=getBookingsByUser, msNameList=[acmeair-mainservice]), MsInterface(url=/booking/cancelbooking, type=POST, className=BookService, methodName=cancelBooking, msNameList=[acmeair-mainservice]), MsInterface(url=/booking/bookflights, type=POST, className=BookService, methodName=bookFlight, msNameList=[acmeair-mainservice])]
+, 
+微服务acmeair-customerservice
+	 classList = [CustomerService, CustomerServiceRestInternal, MilesResponse, CustomerLivenessHealthCheck, CustomerServiceRest, CustomerLoaderRest, CustomerServiceApp, MongoProperties, CustomerInfo, LoginResponse, ConnectionManager, AddressInfo, CustomerServiceImpl, CustomerReadinessHealthCheck, CustomerLoader, CustomerConfiguration, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=ConnectionManager, destination=MongoProperties, type=ClassAssociation), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=CustomerLoader, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerServiceRest, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerConfiguration, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=ConnectionManager, type=ClassAssociation), ClassRelation(origin=CustomerReadinessHealthCheck, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerConfiguration, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerLoader, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=CustomerServiceRestInternal, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerServiceRest, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerServiceRest, destination=CustomerService, type=ClassDependency), ClassRelation(origin=ConnectionManager, destination=MongoProperties, type=ClassDependency), ClassRelation(origin=CustomerServiceRestInternal, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerServiceImpl, destination=CustomerService, type=ClassInheritance), ClassRelation(origin=CustomerService, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerReadinessHealthCheck, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerLoaderRest, destination=CustomerLoader, type=ClassAssociation), ClassRelation(origin=CustomerServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=CustomerLoaderRest, destination=CustomerLoader, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassAssociation), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerService, destination=CustomerInfo, type=ClassDependency)]
+	 interfaceList = [MsInterface(url=/customer/byid/{custid}, type=GET, className=customerService, methodName=getCustomerByUsername, msNameList=[acmeair-mainservice]), MsInterface(url=/customer/byid/{custid}, type=POST, className=customerService, methodName=updateCustomer, msNameList=[acmeair-mainservice]), MsInterface(url=/interal/{validateid}, type=POST, className=customerService, methodName=validateCustomer, msNameList=[acmeair-authservice])]
+, 
+微服务acmeair-mainservice
+	 classList = []
+	 classRelationList = []
+	 interfaceList = []
+]
+----------
+---------------------------------------------
+
+oldQualityScore = 1.0150735294117652, cohesion = 1.2301470588235293, couping = 9.2
+newQualityScore = 1.0088235294117647, cohesion = 1.2176470588235293, couping = 9.2
+decreasePercent = 0.006157189424122217
+
+mssChangeCost = 23.900000000000006
+---------------------------------------------------
+共用时 7.333333333333333E-4 min

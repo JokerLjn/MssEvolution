@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/joker/Desktop/项目/微服务系统案例代码/acmeair/acmeair-customerservice-java</OriginalElement>
+  <nodes>
+    <node x="1290.0397737171493" y="1452.0">com.acmeair.service.CustomerService</node>
+    <node x="317.3534644194765" y="2188.0">com.acmeair.web.CustomerServiceRestInternal</node>
+    <node x="266.0" y="1621.0">com.acmeair.web.MilesResponse</node>
+    <node x="0.0" y="2738.0">com.acmeair.health.CustomerLivenessHealthCheck</node>
+    <node x="1432.3534644194765" y="2175.0">com.acmeair.web.CustomerServiceRest</node>
+    <node x="1163.1034644194765" y="2576.0">com.acmeair.config.CustomerLoaderRest</node>
+    <node x="361.0" y="2738.0">com.acmeair.web.CustomerServiceApp</node>
+    <node x="2207.3534644194765" y="820.5">com.acmeair.mongo.MongoProperties</node>
+    <node x="1222.3951310861435" y="637.0">com.acmeair.web.dto.CustomerInfo</node>
+    <node x="0.0" y="1621.0">com.acmeair.web.LoginResponse</node>
+    <node x="2375.3534644194765" y="1543.0">com.acmeair.mongo.ConnectionManager</node>
+    <node x="1231.0627340823976" y="0.0">com.acmeair.web.dto.AddressInfo</node>
+    <node x="2152.9784644194765" y="2019.0">com.acmeair.mongo.services.CustomerServiceImpl</node>
+    <node x="773.3534644194766" y="2227.0">com.acmeair.health.CustomerReadinessHealthCheck</node>
+    <node x="1123.3534644194765" y="2188.0">com.acmeair.loader.CustomerLoader</node>
+    <node x="1815.3534644194765" y="2188.0">com.acmeair.config.CustomerConfiguration</node>
+    <node x="1019.3951310861434" y="976.5">com.acmeair.service.KeyGenerator</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.acmeair.mongo.ConnectionManager" target="com.acmeair.mongo.MongoProperties" relationship="TO_ONE">
+      <point x="0.0" y="-136.5" />
+      <point x="56.0" y="187.0" />
+    </edge>
+    <edge source="com.acmeair.service.CustomerService" target="com.acmeair.service.KeyGenerator" relationship="DEPENDENCY">
+      <point x="-228.5" y="0.0" />
+      <point x="1130.8534644194765" y="1679.5" />
+      <point x="19.95833333333303" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.loader.CustomerLoader" target="com.acmeair.service.CustomerService" relationship="TO_ONE">
+      <point x="14.99953558052357" y="-84.5" />
+      <point x="1282.853" y="2125.0" />
+      <point x="1503.5400396347518" y="2125.0" />
+      <point x="-14.999734082397481" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRest" target="com.acmeair.web.dto.CustomerInfo" relationship="DEPENDENCY">
+      <point x="29.99953558052357" y="-97.5" />
+      <point x="1643.853" y="2140.0" />
+      <point x="1843.0" y="2140.0" />
+      <point x="1843.0" y="1007.5" />
+      <point x="146.99986891385652" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.config.CustomerConfiguration" target="com.acmeair.service.CustomerService" relationship="DEPENDENCY">
+      <point x="-4.644194764296117E-4" y="-84.5" />
+      <point x="1970.353" y="2082.0" />
+      <point x="1518.5400396347518" y="2082.0" />
+      <point x="2.6591760251903906E-4" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.CustomerServiceImpl" target="com.acmeair.mongo.ConnectionManager" relationship="TO_ONE">
+      <point x="172.5" y="-253.5" />
+      <point x="-12.375" y="136.5" />
+    </edge>
+    <edge source="com.acmeair.health.CustomerReadinessHealthCheck" target="com.acmeair.service.CustomerService" relationship="TO_ONE">
+      <point x="14.999535580523343" y="-45.5" />
+      <point x="953.353" y="2125.0" />
+      <point x="1503.5400396347518" y="2125.0" />
+      <point x="-14.999734082397481" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRestInternal" target="com.acmeair.web.dto.CustomerInfo" relationship="CREATE">
+      <point x="217.99953558052346" y="-68.0" />
+      <point x="1057.0" y="2204.5" />
+      <point x="1057.0" y="1061.5" />
+      <point x="-147.00013108614348" y="54.0" />
+    </edge>
+    <edge source="com.acmeair.config.CustomerConfiguration" target="com.acmeair.service.CustomerService" relationship="TO_ONE">
+      <point x="14.99953558052357" y="-84.5" />
+      <point x="1985.353" y="2125.0" />
+      <point x="1503.5400396347518" y="2125.0" />
+      <point x="-14.999734082397481" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.loader.CustomerLoader" target="com.acmeair.service.CustomerService" relationship="DEPENDENCY">
+      <point x="-4.644194764296117E-4" y="-84.5" />
+      <point x="1267.853" y="2167.0" />
+      <point x="852.0" y="2167.0" />
+      <point x="852.0" y="2082.0" />
+      <point x="1518.5400396347518" y="2082.0" />
+      <point x="2.6591760251903906E-4" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.service.CustomerService" target="com.acmeair.service.KeyGenerator" relationship="TO_ONE">
+      <point x="-228.5" y="15.0" />
+      <point x="1095.8534644194765" y="1694.5" />
+      <point x="-15.04166666666697" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRestInternal" target="com.acmeair.service.CustomerService" relationship="DEPENDENCY">
+      <point x="-4.644194765432985E-4" y="-84.5" />
+      <point x="535.353" y="2167.0" />
+      <point x="852.0" y="2167.0" />
+      <point x="852.0" y="2082.0" />
+      <point x="1518.5400396347518" y="2082.0" />
+      <point x="2.6591760251903906E-4" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRest" target="com.acmeair.service.CustomerService" relationship="TO_ONE">
+      <point x="14.99953558052357" y="-97.5" />
+      <point x="1628.853" y="2125.0" />
+      <point x="1503.5400396347518" y="2125.0" />
+      <point x="-14.999734082397481" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRestInternal" target="com.acmeair.web.dto.AddressInfo" relationship="CREATE">
+      <point x="-30.000464419476486" y="-84.5" />
+      <point x="505.353" y="292.5" />
+      <point x="-133.49973408239748" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRest" target="com.acmeair.service.CustomerService" relationship="DEPENDENCY">
+      <point x="-4.644194764296117E-4" y="-97.5" />
+      <point x="1613.853" y="2082.0" />
+      <point x="1518.5400396347518" y="2082.0" />
+      <point x="2.6591760251903906E-4" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.mongo.ConnectionManager" target="com.acmeair.mongo.MongoProperties" relationship="DEPENDENCY">
+      <point x="-56.0" y="-136.5" />
+      <point x="0.0" y="187.0" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRestInternal" target="com.acmeair.service.CustomerService" relationship="TO_ONE">
+      <point x="-15.000464419476543" y="-84.5" />
+      <point x="520.353" y="2125.0" />
+      <point x="1503.5400396347518" y="2125.0" />
+      <point x="-14.999734082397481" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.CustomerServiceImpl" target="com.acmeair.service.CustomerService" relationship="GENERALIZATION">
+      <point x="-15.00046441947643" y="-253.5" />
+      <point x="2317.978" y="1664.5" />
+      <point x="228.5" y="-15.0" />
+    </edge>
+    <edge source="com.acmeair.service.CustomerService" target="com.acmeair.web.dto.AddressInfo" relationship="DEPENDENCY">
+      <point x="2.6591760251903906E-4" y="-227.5" />
+      <point x="1518.5400396347518" y="1415.0" />
+      <point x="1867.5" y="1415.0" />
+      <point x="1867.5" y="292.5" />
+      <point x="133.50026591760252" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRestInternal" target="com.acmeair.web.MilesResponse" relationship="CREATE">
+      <point x="-170.3534644194765" y="-84.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="com.acmeair.health.CustomerReadinessHealthCheck" target="com.acmeair.service.CustomerService" relationship="DEPENDENCY">
+      <point x="-4.6441947665698535E-4" y="-45.5" />
+      <point x="938.353" y="2167.0" />
+      <point x="852.0" y="2167.0" />
+      <point x="852.0" y="2082.0" />
+      <point x="1518.5400396347518" y="2082.0" />
+      <point x="2.6591760251903906E-4" y="227.5" />
+    </edge>
+    <edge source="com.acmeair.web.CustomerServiceRestInternal" target="com.acmeair.web.LoginResponse" relationship="CREATE">
+      <point x="-218.0" y="0.0" />
+      <point x="122.5" y="2272.5" />
+      <point x="0.0" y="58.5" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.CustomerServiceImpl" target="com.acmeair.web.dto.AddressInfo" relationship="DEPENDENCY">
+      <point x="-4.644194764296117E-4" y="-253.5" />
+      <point x="2332.978" y="1415.0" />
+      <point x="1867.5" y="1415.0" />
+      <point x="1867.5" y="292.5" />
+      <point x="133.50026591760252" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.config.CustomerLoaderRest" target="com.acmeair.loader.CustomerLoader" relationship="TO_ONE">
+      <point x="-13.25" y="-58.5" />
+      <point x="0.0" y="84.5" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.CustomerServiceImpl" target="com.acmeair.mongo.ConnectionManager" relationship="DEPENDENCY">
+      <point x="157.5" y="-253.5" />
+      <point x="-27.375" y="136.5" />
+    </edge>
+    <edge source="com.acmeair.config.CustomerLoaderRest" target="com.acmeair.loader.CustomerLoader" relationship="DEPENDENCY">
+      <point x="1.75" y="-58.5" />
+      <point x="15.0" y="84.5" />
+    </edge>
+    <edge source="com.acmeair.mongo.services.CustomerServiceImpl" target="com.acmeair.web.dto.CustomerInfo" relationship="DEPENDENCY">
+      <point x="-180.00046441947643" y="-205.5" />
+      <point x="1843.0" y="2067.0" />
+      <point x="1843.0" y="1007.5" />
+      <point x="146.99986891385652" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.loader.CustomerLoader" target="com.acmeair.web.dto.CustomerInfo" relationship="CREATE">
+      <point x="-144.50046441947643" y="-68.0" />
+      <point x="1057.0" y="2204.5" />
+      <point x="1057.0" y="1061.5" />
+      <point x="-147.00013108614348" y="54.0" />
+    </edge>
+    <edge source="com.acmeair.web.dto.CustomerInfo" target="com.acmeair.web.dto.AddressInfo" relationship="TO_ONE">
+      <point x="-4.832397003745882" y="-370.5" />
+      <point x="0.0" y="292.5" />
+    </edge>
+    <edge source="com.acmeair.loader.CustomerLoader" target="com.acmeair.web.dto.AddressInfo" relationship="CREATE">
+      <point x="29.99953558052357" y="-84.5" />
+      <point x="1297.853" y="2146.0" />
+      <point x="505.353" y="2146.0" />
+      <point x="505.353" y="292.5" />
+      <point x="-133.49973408239748" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.web.dto.CustomerInfo" target="com.acmeair.web.dto.AddressInfo" relationship="DEPENDENCY">
+      <point x="-1.3108614348311676E-4" y="370.5" />
+      <point x="1369.395" y="1415.0" />
+      <point x="1867.5" y="1415.0" />
+      <point x="1867.5" y="292.5" />
+      <point x="133.50026591760252" y="0.0" />
+    </edge>
+    <edge source="com.acmeair.service.CustomerService" target="com.acmeair.web.dto.CustomerInfo" relationship="DEPENDENCY">
+      <point x="228.50026591760252" y="0.0" />
+      <point x="1843.0" y="1679.5" />
+      <point x="1843.0" y="1007.5" />
+      <point x="146.99986891385652" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5209582902447432" showDependencies="true" x="1358.5000000000002" y="1195.2123999205983" />
+  <SelectedNodes>
+    <node>com.acmeair.service.CustomerService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

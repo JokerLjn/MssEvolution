@@ -1,0 +1,34 @@
+graph class3 {
+fontname="Microsoft YaHei";
+	edge [fontname="Microsoft YaHei", len=3];
+	node [fontname="Microsoft YaHei"];
+
+	Cargo [label="Cargo"];
+	Role [label="Role"];
+	Customer [label="Customer"];
+	HandlingEvent [label="HandlingEvent"];
+	DeliverySpecification [label="DeliverySpecification"];
+	CarrierMovement [label="CarrierMovement"];
+	Location [label="Location"];
+	CustomerRepository [label="CustomerRepository"];
+	CargoRepository [label="CargoRepository"];
+	HandlingEventRepository [label="HandlingEventRepository"];
+	CustomerAgreement [label="CustomerAgreement"];
+	PriceModel [label="PriceModel"];
+	Invoice [label="Invoice"];
+
+	Customer -- Role;
+	Cargo -- Role;
+	HandlingEvent -- Cargo;
+	DeliverySpecification -- Cargo;
+	DeliverySpecification -- Location;
+	HandlingEvent -- CarrierMovement;
+	CarrierMovement -- Location;
+	CustomerRepository -- Customer;
+	CargoRepository -- Cargo;
+	Cargo -- DeliverySpecification;
+	HandlingEventRepository -- HandlingEvent;
+	CustomerAgreement -- PriceModel;
+	Invoice -- Customer;
+
+}

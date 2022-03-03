@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/joker/Desktop/项目/微服务系统案例代码/acmeair/acmeair-authservice-java-main</OriginalElement>
+  <nodes>
+    <node x="284.0" y="1143.0">com.acmeair.web.AuthServiceApp</node>
+    <node x="822.75" y="0.0">com.acmeair.health.AuthHealthCheck</node>
+    <node x="365.0" y="480.0">com.acmeair.restclient.CustomerClient</node>
+    <node x="0.0" y="284.0">com.acmeair.utils.SecurityUtils</node>
+    <node x="532.75" y="0.0">com.acmeair.restclient.LoginResponse</node>
+    <node x="298.97" y="168.0">com.acmeair.restclient.LoginFallbackHandler</node>
+    <node x="0.0" y="1143.0">com.acmeair.config.SessionConfiguration</node>
+    <node x="205.84500000000003" y="800.0">com.acmeair.web.AuthServiceRest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.acmeair.restclient.CustomerClient" target="com.acmeair.restclient.LoginResponse" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.0" />
+      <point x="555.0" y="257.0" />
+      <point x="649.47" y="257.0" />
+      <point x="649.47" y="147.0" />
+      <point x="745.5" y="147.0" />
+      <point x="745.5" y="137.0" />
+      <point x="716.5" y="137.0" />
+      <point x="61.25" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.restclient.CustomerClient" target="com.acmeair.restclient.LoginFallbackHandler" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.0" />
+      <point x="555.0" y="257.0" />
+      <point x="468.97" y="257.0" />
+      <point x="0.0" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.restclient.LoginFallbackHandler" target="com.acmeair.restclient.LoginResponse" relationship="CREATE">
+      <point x="0.0" y="-31.0" />
+      <point x="468.97" y="147.0" />
+      <point x="594.0" y="147.0" />
+      <point x="-61.25" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.web.AuthServiceRest" target="com.acmeair.restclient.CustomerClient" relationship="DEPENDENCY">
+      <point x="83.25" y="-149.0" />
+      <point x="455.595" y="779.0" />
+      <point x="564.22" y="779.0" />
+      <point x="564.22" y="759.0" />
+      <point x="650.0" y="759.0" />
+      <point x="95.0" y="31.0" />
+    </edge>
+    <edge source="com.acmeair.web.AuthServiceRest" target="com.acmeair.utils.SecurityUtils" relationship="TO_ONE">
+      <point x="-83.25" y="-149.0" />
+      <point x="289.095" y="779.0" />
+      <point x="167.5" y="779.0" />
+      <point x="167.5" y="769.0" />
+      <point x="86.25" y="769.0" />
+      <point x="-86.25" y="227.0" />
+    </edge>
+    <edge source="com.acmeair.web.AuthServiceRest" target="com.acmeair.restclient.LoginResponse" relationship="DEPENDENCY">
+      <point x="83.25" y="-149.0" />
+      <point x="455.595" y="779.0" />
+      <point x="564.22" y="779.0" />
+      <point x="564.22" y="759.0" />
+      <point x="755.5" y="759.0" />
+      <point x="755.5" y="147.0" />
+      <point x="745.5" y="147.0" />
+      <point x="745.5" y="137.0" />
+      <point x="716.5" y="137.0" />
+      <point x="61.25" y="58.0" />
+    </edge>
+    <edge source="com.acmeair.web.AuthServiceRest" target="com.acmeair.utils.SecurityUtils" relationship="DEPENDENCY">
+      <point x="83.25" y="-149.0" />
+      <point x="455.595" y="779.0" />
+      <point x="564.22" y="779.0" />
+      <point x="564.22" y="759.0" />
+      <point x="258.75" y="759.0" />
+      <point x="86.25" y="227.0" />
+    </edge>
+    <edge source="com.acmeair.web.AuthServiceRest" target="com.acmeair.restclient.CustomerClient" relationship="TO_ONE">
+      <point x="-83.25" y="-149.0" />
+      <point x="289.095" y="779.0" />
+      <point x="167.5" y="779.0" />
+      <point x="167.5" y="769.0" />
+      <point x="460.0" y="769.0" />
+      <point x="-95.0" y="31.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5115722266560255" showDependencies="true" x="541.5" y="616.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

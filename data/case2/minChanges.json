@@ -1,0 +1,150 @@
+[
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "className": "Order",
+    "classType": "Entity"
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "ID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "customerID",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightId",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "flightInfo",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "className": "Order",
+    "attribute": {
+      "name": "status",
+      "type": "String",
+      "accessRight": "private"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "addBookingOrder",
+      "params": [
+        {
+          "name": "customerID",
+          "type": "String"
+        },
+        {
+          "name": "flightId",
+          "type": "String"
+        },
+        {
+          "name": "flightInfo",
+          "type": "String"
+        }
+      ],
+      "returnType": "Order"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "className": "Order",
+    "method": {
+      "name": "payOrder",
+      "params": [
+        {
+          "name": "orderID",
+          "type": "String"
+        },
+        {
+          "name": "money",
+          "type": "double"
+        }
+      ],
+      "returnType": "boolean"
+    }
+  },
+  {
+  "obj": "METHOD",
+  "type": "ADD",
+  "className": "Order",
+  "method": {
+    "name": "finishOrder",
+    "params": [
+      {
+        "name": "orderID",
+        "type": "String"
+      },
+      {
+        "name": "status",
+        "type": "String"
+      }
+    ],
+    "returnType": "boolean"
+  }
+},
+  {
+    "obj": "RELATION",
+    "type": "ADD",
+    "relation": {
+      "origin": {
+        "name": "BookingService"
+      },
+      "destination": {
+        "name": "Order"
+      },
+      "type": "ClassDependency"
+    }
+  },
+  {
+    "obj": "OBJECT",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "className": "Order"
+  },
+  {
+    "obj": "MESSAGE",
+    "type": "ADD",
+    "sequenceName": "AcmeAir sequence",
+    "methodCall": {
+      "num": 72,
+      "type": "SIMPLE",
+      "from": "BookingService",
+      "to": "Order",
+      "method": "addBookingOrder"
+    }
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "CustomerRepositoryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "CustomerRepositoryService",
+    "valueMap": {
+      "className": "CustomerRepository"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "CustomerRepositoryService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "CustomerRepositoryService",
+      "interface": "/customer/getInfo"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "CargoService",
+    "valueMap": {
+      "fromMs": "CustomerService",
+      "toMs": "CargoService",
+      "className": "Role"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "DELETE",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "Customer",
+      "method": "getInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "CustomerRepository",
+      "method": "findByCustomerId"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "CustomerRepository",
+      "method": "findByName"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "className": "CargoRepository"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "DELETE",
+    "msName": "CargoService",
+    "valueMap": {
+      "className": "Cargo",
+      "method": "getCargoInfo"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "className": "CargoRepository",
+      "method": "findByCargoTrackingId"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "className": "CargoRepository",
+      "method": "updateCargo"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "DeliveryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "MOVE",
+    "msName": "DeliveryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "DeliveryService",
+      "className": "DeliverySpecification"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "className": "HandleEventRepository"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "className": "HandleEventRepository",
+      "method": "search"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "className": "HandleEventRepository",
+      "method": "add"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "HandleEventRepositoryService",
+      "interface": "/history/search"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "HandleEventRepositoryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "HandleEventRepositoryService",
+      "interface": "/history/add"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "DELETE",
+    "msName": "CargoService",
+    "valueMap": {
+      "className": "DeliveryHistory"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "MOVE",
+    "msName": "CargoRepositoryService",
+    "valueMap": {
+      "fromMs": "CargoService",
+      "toMs": "CargoRepositoryService",
+      "interface": "/cargo/getInfo"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "Invoice"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "Invoice",
+      "attribute": "ID"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "Invoice",
+      "attribute": "date"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "className": "Invoice",
+      "method": "developInvoice"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "CustomerService",
+    "valueMap": {
+      "interface": "/bill/developInvoice",
+      "className": "Invoice",
+      "method": "developInvoice"
+    }
+  },
+  {
+    "obj": "MICROSERVICE",
+    "type": "ADD",
+    "msName": "PriceService",
+    "valueMap": {
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "PriceService",
+    "valueMap": {
+      "className": "CustomerAgreement"
+    }
+  },
+  {
+    "obj": "CLASS",
+    "type": "ADD",
+    "msName": "PriceService",
+    "valueMap": {
+      "className": "PriceModel"
+    }
+  },
+  {
+    "obj": "METHOD",
+    "type": "ADD",
+    "msName": "PriceService",
+    "valueMap": {
+      "className": "CustomerAgreement",
+      "method": "getPriceModel"
+    }
+  },
+  {
+    "obj": "ATTRIBUTE",
+    "type": "ADD",
+    "msName": "PriceService",
+    "valueMap": {
+      "className": "CustomerAgreement",
+      "attribute": "priceModel"
+    }
+  },
+  {
+    "obj": "INTERFACE",
+    "type": "ADD",
+    "msName": "PriceService",
+    "valueMap": {
+      "interface": "/price/getPriceModel",
+      "className": "CustomerAgreement",
+      "method": "getPriceModel"
+    }
+  }
+]

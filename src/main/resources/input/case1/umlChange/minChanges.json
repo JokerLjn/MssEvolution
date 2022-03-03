@@ -1,0 +1,120 @@
+[
+  {
+    "type": "ADD",
+    "obj": "CLASS",
+    "className": "CustomerRepository",
+    "classType": "Control"
+  },
+  {
+    "type": "DELETE",
+    "obj": "METHOD",
+    "className": "Customer",
+    "method": {
+      "name": "getInfo"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CustomerRepository",
+    "method": {
+      "name": "findByCustomerID",
+      "params": [
+        {
+          "name": "customerID",
+          "type": "String"
+        }
+      ],
+      "returnType": "Customer"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CustomerRepository",
+    "method": {
+      "name": "findByName",
+      "params": [
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "returnType": "Customer"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "RELATION",
+    "relation": {
+      "origin": {
+        "name": "CustomerRepository"
+      },
+      "destination": {
+        "name": "Customer"
+      },
+      "type": "ClassAssociation"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "CLASS",
+    "className": "CargoRepository",
+    "classType": "Control"
+  },
+  {
+    "type": "DELETE",
+    "obj": "METHOD",
+    "className": "Cargo",
+    "method": {
+      "name": "finish"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CargoRepository",
+    "method": {
+      "name": "findByCargoTrackingID",
+      "params": [
+        {
+          "name": "trackingID",
+          "type": "String"
+        }
+      ],
+      "returnType": "Cargo"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "METHOD",
+    "className": "CargoRepository",
+    "method": {
+      "name": "updateCargo",
+      "params": [
+        {
+          "name": "status",
+          "type": "int"
+        },
+        {
+          "name": "stock",
+          "type": "int"
+        }
+      ],
+      "returnType": "void"
+    }
+  },
+  {
+    "type": "ADD",
+    "obj": "RELATION",
+    "relation": {
+      "origin": {
+        "name": "CargoRepository"
+      },
+      "destination": {
+        "name": "Cargo"
+      },
+      "type": "ClassAssociation"
+    }
+  }
+]

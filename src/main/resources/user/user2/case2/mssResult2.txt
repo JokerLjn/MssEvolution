@@ -1,0 +1,35 @@
+微服务系统：
+name = AcmeAir
+microservices = [
+微服务AuthService
+	 classList = [LoginREST]
+	 classRelationList = []
+	 interfaceList = []
+, 
+微服务BookService
+	 classList = [Order, BookingsREST, ConnectionManager, BookingLoader, BookingServiceImpl, BookingService, KeyGenerator]
+	 classRelationList = [ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=BookingLoader, destination=BookingService, type=ClassAssociation), ClassRelation(origin=BookingServiceImpl, destination=BookingService, type=ClassRealization), ClassRelation(origin=BookingLoader, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=BookingsREST, destination=BookingService, type=ClassDependency), ClassRelation(origin=BookingServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=BookingService, destination=Order, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务FightService
+	 classList = [FlightServiceImpl, ConnectionManager, AirportCodeMapping, FlightService, LoaderREST, AcmeAirApp, KeyGenerator, AcmeAirConfiguration, FlightLoader]
+	 classRelationList = [ClassRelation(origin=FlightLoader, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=AcmeAirConfiguration, destination=FlightService, type=ClassAssociation), ClassRelation(origin=FlightService, destination=AirportCodeMapping, type=ClassDependency), ClassRelation(origin=FlightLoader, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=AcmeAirConfiguration, destination=FlightService, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=FlightServiceImpl, destination=FlightService, type=ClassInheritance)]
+	 interfaceList = []
+, 
+微服务CustomerService
+	 classList = [CustomerService, ConnectionManager, CustomerREST, CustomerServiceImpl, CustomerInfo, KeyGenerator, AddressInfo, CustomerLoader]
+	 classRelationList = [ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerLoader, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerService, type=ClassInheritance), ClassRelation(origin=CustomerServiceImpl, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=ConnectionManager, type=ClassDependency), ClassRelation(origin=CustomerServiceImpl, destination=CustomerInfo, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassAssociation), ClassRelation(origin=CustomerService, destination=KeyGenerator, type=ClassDependency), ClassRelation(origin=CustomerLoader, destination=CustomerService, type=ClassAssociation), ClassRelation(origin=CustomerREST, destination=CustomerService, type=ClassDependency), ClassRelation(origin=CustomerInfo, destination=AddressInfo, type=ClassDependency), ClassRelation(origin=CustomerService, destination=CustomerInfo, type=ClassDependency)]
+	 interfaceList = []
+, 
+微服务MainService
+	 classList = []
+	 classRelationList = []
+	 interfaceList = []
+]
+----------
+----------------------------
+oldQualityScore = 1.0150735294117652, cohesionDegree = 1.2301470588235293, coupingDegree = 9.2
+newQualityScore = 2.6525793650793656, cohesionDegree = 1.1051587301587302, coupingDegree = 5.8
+decreasePercent = -1.6131893781296165
+-----------------------------------
+mssCost = 42.93999999999998

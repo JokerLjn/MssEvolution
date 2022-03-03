@@ -1,0 +1,76 @@
+[
+  {
+    "name": "AuthService",
+    "classSet": [
+      "LoginResponse",
+      "AuthHealthCheck",
+      "CustomerClient",
+      "LoginFallbackHandler",
+      "LoginREST",
+      "SessionConfiguration"
+    ]
+  },
+  {
+    "name": "BookService",
+    "classSet": [
+      "BookingService",
+      "BookingServiceImpl",
+      "BookingsREST",
+      "BookingReadinessHealthCheck",
+      "MilesResponse",
+      "BookingConfiguration",
+      "ConnectionManager",
+      "MongoProperties",
+      "LongFallbackHandler",
+      "BookingLoader",
+      "BookingLoaderRest",
+      "KeyGenerator",
+      "CustomerClient",
+      "FlightClient",
+      "RewardTracker",
+      "Order",
+      "FlightInfo"
+    ]
+  },
+  {
+    "name": "CustomerService",
+    "classSet": [
+      "CustomerService",
+      "CustomerServiceImpl",
+      "CustomerREST",
+      "CustomerServiceRestInternal",
+      "CustomerReadinessHealthCheck",
+      "CustomerLivenessHealthCheck",
+      "MilesResponse",
+      "LoginResponse",
+      "CustomerConfiguration",
+      "ConnectionManager",
+      "CustomerInfo",
+      "AddressInfo",
+      "CustomerLoader",
+      "CustomerLoaderRest",
+      "MongoProperties",
+      "KeyGenerator"
+    ]
+  },
+  {
+    "name": "FlightService",
+    "classSet": [
+      "FlightService",
+      "FlightServiceImpl",
+      "FlightsRest",
+      "FlightReadinessHealthCheck",
+      "MilesResponse",
+      "FlightConfiguration",
+      "ConnectionManager",
+      "MongoProperties",
+      "FlightLoader",
+      "LoaderREST",
+      "KeyGenerator",
+      "DatePram",
+      "AcmeAirApp",
+      "AirportCodeMapping",
+      "AcmeAirConfiguration"
+    ]
+  }
+]

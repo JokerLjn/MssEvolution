@@ -1,0 +1,77 @@
+[
+  {
+    "name": "AuthService",
+    "classSet": [
+      "LoginResponse",
+      "AuthHealthCheck",
+      "CustomerClient",
+      "AuthService",
+      "AuthServiceImpl",
+      "LoginFallbackHandler",
+      "LoginRest",
+      "SessionConfiguration"
+    ]
+  },
+  {
+    "name": "BookingService",
+    "classSet": [
+      "BookingReadinessHealthCheck",
+      "MilesResponse",
+      "BookingConfiguration",
+      "ConnectionManager",
+      "CustomerClient",
+      "BookingService",
+
+      "BookingServiceImpl",
+      "MongoProperties",
+      "BookingLivenessHealthCheck",
+
+      "FlightClient",
+      "LongFallbackHandler",
+      "BookingServiceRest",
+      "BookingLoader",
+      "BookingLoaderRest",
+      "RewardTracker",
+      "KeyGenerator"
+    ]
+  },
+  {
+    "name": "CustomerService",
+    "classSet": [
+      "CustomerLivenessHealthCheck",
+      "CustomerInfo",
+      "ConnectionManager",
+      "AddressInfo",
+      "CustomerReadinessHealthCheck",
+      "CustomerService",
+      "CustomerServiceImpl",
+      "MongoProperties",
+      "LoginResponse",
+      "KeyGenerator",
+      "CustomerServiceRest",
+      "CustomerLoader",
+      "CustomerLoaderRest",
+      "MilesResponse",
+      "CustomerServiceRestInternal",
+      "CustomerConfiguration"
+    ]
+  },
+  {
+    "name": "FlightService",
+    "classSet": [
+      "FlightLoader",
+      "MilesResponse",
+      "FlightConfiguration",
+      "FlightReadinessHealthCheck",
+      "FlightService",
+      "FlightServiceImpl",
+      "DateParam",
+      "MongoProperties",
+      "AirportCodeMapping",
+      "FlightServiceRest",
+      "ConnectionManager",
+      "FlightLoaderRest",
+      "KeyGenerator"
+    ]
+  }
+]
